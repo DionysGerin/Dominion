@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dominion;
 
 
-/**
- *
- * @author Dionys
- */
 public class Maintester 
 {
     public static void main(String[] args)
@@ -27,5 +18,8 @@ public class Maintester
         //VictoryCard vc2 = new VictoryCard("Duchy", 5, 3);
         //VictoryCard vc3 = new VictoryCard("Province", 8, 6);
         
+        
+        Deck deck = new Deck();
+        System.out.println(deck.getDeck());
     }
 }
