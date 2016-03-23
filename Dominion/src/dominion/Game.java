@@ -1,5 +1,4 @@
 package dominion;
-import dominion.Player;
 
 public class Game 
 {
@@ -15,6 +14,6 @@ public class Game
         
         public String getPlayers()
         {
-            return players[0].getName() + ' ' + players[1].getName();
+            return players[0].getPlayerName() + ' ' + players[1].getPlayerName();
         }
 }

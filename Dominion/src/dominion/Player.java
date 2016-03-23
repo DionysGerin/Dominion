@@ -2,21 +2,21 @@ package dominion;
 
 public class Player
 {
-	private String playerName;
+	private String playername;
         private int score;
 	
 	public Player(String name)
 	{
-		playerName = name;
+		playername = name;
                 score = 0;
 	}
 	
-	public String getName()
+	public String getPlayerName()
 	{
-            return playerName;
+            return playername;
 	}
         
-        public int getScore()
+        public int getPlayerScore()
         {
             return score;
         }
