@@ -20,12 +20,11 @@ public class CardCollection
     
     public CardCollection()
     {
-        
         deck = new ArrayList(100);
         discard = new ArrayList(100);
         supply = new ArrayList(20);
         
-        for (int i = 0; i < 6; i++) deck.add(tc1);
+        for (int i = 0; i < 7; i++) deck.add(tc1);
         
         for (int i = 7; i < 10; i++) deck.add(vc1);
     }

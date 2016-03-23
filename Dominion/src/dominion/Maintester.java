@@ -1,5 +1,7 @@
 package dominion;
 
+import java.util.ArrayList;
+
 
 public class Maintester 
 {
@@ -13,13 +15,13 @@ public class Maintester
         {
             System.out.println("Player " + (i + 1) + ": " + game.getPlayers().get(i).getPlayerName());
             System.out.println(); 
-            
-            for (int j = 0; j < game.getPlayers().get(i).getCardCollection().getDeck().size();j++)
+            ArrayList<Card> deck = game.getPlayers().get(i).getCardCollection().getDeck();
+            for (int j = 0; j < deck.size();j++)
             {
-                System.out.println("Name: " + game.getPlayers().get(i).getCardCollection().getDeck().get(i).getName());
-                System.out.println("Cost: " + game.getPlayers().get(i).getCardCollection().getDeck().get(i).getCost());
-                System.out.println("Value: " + game.getPlayers().get(i).getCardCollection().getDeck().get(i).getValue());
-                System.out.println("Type: " + game.getPlayers().get(i).getCardCollection().getDeck().get(i).getType());
+                System.out.println("Name: " + game.getPlayers().get(i).getCardCollection().getDeck().get(j).getName());
+                System.out.println("Cost: " + game.getPlayers().get(i).getCardCollection().getDeck().get(j).getCost());
+                System.out.println("Value: " + game.getPlayers().get(i).getCardCollection().getDeck().get(j).getValue());
+                System.out.println("Type: " + game.getPlayers().get(i).getCardCollection().getDeck().get(j).getType());
                 System.out.println();
             }
         }
