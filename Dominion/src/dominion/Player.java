@@ -4,13 +4,13 @@ public class Player
 {
 	private String playername;
         private int score;
-        private Deck playerdeck;
+        private CardCollection playercollection;
 	
 	public Player(String name)
 	{
 		playername = name;
                 score = 0;
-                playerdeck = new Deck();
+                playercollection = new CardCollection();
 	}
 	
 	public String getPlayerName()
@@ -21,5 +21,10 @@ public class Player
         public int getPlayerScore()
         {
             return score;
+        }
+        
+        public CardCollection getCardCollection()
+        {
+            return playercollection;
         }
 }
