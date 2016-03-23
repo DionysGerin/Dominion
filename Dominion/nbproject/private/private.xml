@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/Dominion/src/dominion/TreasureCard.java</file>
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/Dominion/src/dominion/Game.java</file>
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/Dominion/src/dominion/Maintester.java</file>
@@ -11,6 +12,11 @@
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/Dominion/src/dominion/ActionCard.java</file>
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/Dominion/src/dominion/Turn.java</file>
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/Dominion/src/dominion/VictoryCard.java</file>
+=======
+            <file>file:/C:/Users/Anas%20Hamaideh/Documents/GitHub/Noinimod/Dominion/src/Gui/main.java</file>
+            <file>file:/C:/Users/Anas%20Hamaideh/Documents/GitHub/Noinimod/Dominion/src/dominion/Maintester.java</file>
+            <file>file:/C:/Users/Anas%20Hamaideh/Documents/GitHub/Noinimod/Dominion/src/dominion/Deck.java</file>
+>>>>>>> 477718f92f55be7c519fa9b1c8adfbc07d3c605f
         </group>
     </open-files>
 </project-private>
