@@ -1,20 +1,21 @@
 package dominion;
 
+import java.util.*;
 
 public class Game 
 {
-	private Player[] players;
+	private ArrayList<Player> players;
 	private ActionCard[] shop;
         
         public Game(Player player1, Player player2)
         {
-            players = new Player[2];
-            players[0] = player1;
-            players[1] = player2;
+            players = new ArrayList(9);
+            players.add(player1);
+            players.add(player2);
         }
         
-        public String getPlayers()
+        public ArrayList<Player> getPlayers()
         {
-            return players[0].getPlayerName() + ' ' + players[1].getPlayerName();
+            return players;
         }
 }

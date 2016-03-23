@@ -26,12 +26,12 @@ public class Deck
         }
     }
     
-    public ArrayList getDeck()
+    public ArrayList<Card> getDeck()
     {
         return deck;
     }
     
-    public ArrayList getDiscard()
+    public ArrayList<Card> getDiscard()
     {
         return discard;
     }
