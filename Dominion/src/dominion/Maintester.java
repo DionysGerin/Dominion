@@ -1,6 +1,5 @@
 package dominion;
 
-
 public class Maintester 
 {
     public static void main(String[] args)
@@ -19,7 +18,7 @@ public class Maintester
         //VictoryCard vc3 = new VictoryCard("Province", 8, 6);
         
         
-        Deck deck = new Deck();
-        System.out.println(deck.getDeck());
+        Deck deckP1 = new Deck();
+        System.out.println(deckP1.getDeck().get(1).getName());
     }
 }
