@@ -9,7 +9,6 @@ package dominion;
  *
  * @author Dionys
  */
-public class Supply 
-{
+public class MySQLConnector {
     
 }

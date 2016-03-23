@@ -6,6 +6,7 @@ public class CardCollection
 {
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
+    private ArrayList<Card> supply;
     private Card vc1 = new Card("Estate", 2, 1, "Victory");
     private Card tc1 = new Card("Copper", 0, 1, "Treasure");
     //TreasureCard tc1 = new TreasureCard("Copper", 0, 1);
@@ -20,6 +21,7 @@ public class CardCollection
         
         deck = new ArrayList(100);
         discard = new ArrayList(100);
+        supply = new ArrayList(20);
         
         for(int i = 0; i <= 2; i++)
         {
@@ -40,5 +42,24 @@ public class CardCollection
     public ArrayList<Card> getDiscard()
     {
         return discard;
+    }
+    
+    public ArrayList<Card> getSupply()
+    {
+        return supply;
+    }
+    
+    public void takeCard(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            supply.add(deck.get(0));
+            deck.remove(0);        
+        }
+    }
+    
+    public void discardCard(int index)
+    {
+        supply.remove(index);
     }
 }
