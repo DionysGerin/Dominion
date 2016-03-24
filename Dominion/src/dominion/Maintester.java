@@ -28,5 +28,12 @@ public class Maintester
                 System.out.println();
             }
         }
+        
+        /*while (!winconditie)
+        {
+            turn.p1;
+            game.player.collection.deck.takeCards
+            turn.p2;
+        }*/
     }
 }

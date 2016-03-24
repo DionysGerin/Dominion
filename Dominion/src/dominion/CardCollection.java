@@ -24,6 +24,8 @@ public class CardCollection
         for (int i = 0; i < 7; i++) deck.add(new Card("Copper", 0, 1, "Treasure"));
         
         for (int i = 7; i < 10; i++) deck.add(new Card("Estate", 2, 1, "Victory"));
+        
+        shuffleDeck();
     }
     
     public ArrayList<Card> getDeck()
@@ -45,8 +47,9 @@ public class CardCollection
     {
         for (int i = 0; i < amount; i++)
         {
+            if (deck.isEmpty()) discardToDeck();
             supply.add(deck.get(0));
-            deck.remove(0);        
+            deck.remove(0);
         }
     }
     
@@ -57,7 +60,13 @@ public class CardCollection
     
     public void discardToDeck()
     {
-        deck = (ArrayList)discard.clone();
+        deck = (ArrayList) discard.clone();
         discard.clear();
+        shuffleDeck();
+    }
+    
+    public void shuffleDeck()
+    {
+        Collections.shuffle(deck);
     }
 }
