@@ -4,15 +4,13 @@ public class Card
 {
     private String name;
     private int cost;
-    private int value;
-    private String type;
+    private int type;
 
-    public Card(String name, int cost, int value, String type)
+    public Card(String name, int cost, int type)
     {
             this.name = name;
             this.cost = cost;
-            this.value = value;
-            this.type = type;
+            this.type = type; // 0 = treasure, 1 = victory, 2 = action
     }
 
     public String getName()
@@ -24,13 +22,8 @@ public class Card
     {
         return cost;
     }
-
-    public int getValue()
-    {
-        return value;
-    }
     
-    public String getType()
+    public int getType()
     {
         return type;
     }

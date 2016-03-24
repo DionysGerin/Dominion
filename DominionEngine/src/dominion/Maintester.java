@@ -9,7 +9,7 @@ public class Maintester
     {
         Player player1 = new Player("Dio");
         Player player2 = new Player("Lars");
-        Game game = new Game(player1, player2);      
+        Game game = new Game(player1, player2);    
         
         for (int i = 0; i < game.getPlayers().size(); i++)
         {
@@ -20,10 +20,9 @@ public class Maintester
             for (int j = 0; j < deck.size();j++)
             {
                 Card cardFromDeck = deck.get(j);
-                
                 System.out.println("Name: " + cardFromDeck.getName());
                 System.out.println("Cost: " + cardFromDeck.getCost());
-                System.out.println("Value: " + cardFromDeck.getValue());
+                if (cardFromDeck.getType() == 0) System.out.println("Value: " + cardFromDeck.getTreasurePoints());
                 System.out.println("Type: " + cardFromDeck.getType());
                 System.out.println();
             }
@@ -34,6 +33,6 @@ public class Maintester
             turn.p1;
             game.player.collection.deck.takeCards
             turn.p2;
-        }*/
+        }*/        
     }
 }

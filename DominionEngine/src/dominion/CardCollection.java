@@ -21,9 +21,9 @@ public class CardCollection
         discard = new ArrayList(100);
         supply = new ArrayList(20);
         
-        for (int i = 0; i < 7; i++) deck.add(new Card("Copper", 0, 1, "Treasure"));
+        for (int i = 0; i < 7; i++) deck.add(new TreasureCard("Copper", 0, 1));
         
-        for (int i = 7; i < 10; i++) deck.add(new Card("Estate", 2, 1, "Victory"));
+        for (int i = 7; i < 10; i++) deck.add(new VictoryCard("Estate", 2, 1));
         
         shuffleDeck();
     }
