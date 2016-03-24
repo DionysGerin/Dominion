@@ -4,11 +4,13 @@ public class Turn
 {
 	private int actions;
 	private int buys;
+        private boolean isOver;
 	
 	public Turn()
 	{
 		actions = 1;
 		buys = 1;
+                isOver = false;
 	}
 	
 	public int getActions()
@@ -45,5 +47,11 @@ public class Turn
 	{
 		actions = 0;
 		buys = 0;
+                isOver = true;
 	}
+        
+        public boolean isOver()
+        {
+            return isOver;
+        }
 }
