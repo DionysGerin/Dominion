@@ -15,18 +15,15 @@ public class CardCollection
     //VictoryCard vc2 = new VictoryCard("Duchy", 5, 3);
     //VictoryCard vc3 = new VictoryCard("Province", 8, 6);
     
-    private Card vc1 = new Card("Estate", 2, 1, "Victory");
-    private Card tc1 = new Card("Copper", 0, 1, "Treasure");
-    
     public CardCollection()
     {
         deck = new ArrayList(100);
         discard = new ArrayList(100);
         supply = new ArrayList(20);
         
-        for (int i = 0; i < 7; i++) deck.add(tc1);
+        for (int i = 0; i < 7; i++) deck.add(new Card("Copper", 0, 1, "Treasure"));
         
-        for (int i = 7; i < 10; i++) deck.add(vc1);
+        for (int i = 7; i < 10; i++) deck.add(new Card("Estate", 2, 1, "Victory"));
     }
     
     public ArrayList<Card> getDeck()
