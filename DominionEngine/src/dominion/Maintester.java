@@ -22,11 +22,14 @@ public class Maintester
                 Card cardFromDeck = deck.get(j);
                 System.out.println("Name: " + cardFromDeck.getName());
                 System.out.println("Cost: " + cardFromDeck.getCost());
-                if (cardFromDeck.getType() == 0) System.out.println("Value: " + cardFromDeck.getTreasurePoints());
+                //if (cardFromDeck.getType() == 0) System.out.println("Value: " + cardFromDeck.getTreasurePoints());
                 System.out.println("Type: " + cardFromDeck.getType());
                 System.out.println();
             }
         }
+        
+        TreasureCard tcard = new TreasureCard("Diamant",100, 90);
+        System.out.println(tcard.getTreasurePoints());
         
         /*while (!winconditie)
         {

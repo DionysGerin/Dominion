@@ -7,9 +7,7 @@ public class ActionCard extends Card
     public ActionCard(String name, int cost, String ability)
     {
         super(name, cost, 2);
-        this.ability = ability;
-        
-        
+        this.ability = ability;        
     }
             
 }
