@@ -2,20 +2,20 @@ package dominion;
 
 public class Player
 {
-	private String playername;
+	private String playerName;
         private int score;
-        private CardCollection playercollection;
+        private CardCollection playerCollection;
 	
 	public Player(String name)
 	{
-		playername = name;
+		playerName = name;
                 score = 0;
-                playercollection = new CardCollection();
+                playerCollection = new CardCollection();
 	}
 	
 	public String getPlayerName()
 	{
-            return playername;
+            return playerName;
 	}
         
         public int getPlayerScore()
@@ -25,6 +25,6 @@ public class Player
         
         public CardCollection getCardCollection()
         {
-            return playercollection;
+            return playerCollection;
         }
 }
