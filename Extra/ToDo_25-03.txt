@@ -1,0 +1,5 @@
+	TODO:
+ - int[] voor abilities van ActionCard, met Interpreter klasse methodes oproepen die de Turn en CardCollection supply van Player aanpassen.
+ - Text Based game schrijven (Hoe spreken we de engine aan?)
+ - Inheritance van Card voor ActionCard, TreasureCard en VictoryCard (hoe hun methodes oproepen?) OF werken we drie klassen zonder subtype (ArrayList die deze alledrie kan opvangen?)
+ - Gebruiken we een object voor elke speelbare kaart, of voor elke kaarttype?
