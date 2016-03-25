@@ -4,13 +4,13 @@ public class Card
 {
     private String name;
     private int cost;
-    private int type;
+    private int type; // 0 = treasure, 1 = victory, 2 = action
 
     public Card(String name, int cost, int type)
     {
             this.name = name;
             this.cost = cost;
-            this.type = type; // 0 = treasure, 1 = victory, 2 = action
+            this.type = type; 
     }
 
     public String getName()
@@ -23,8 +23,10 @@ public class Card
         return cost;
     }
     
-    public int getType()
+    public String getType()
     {
-        return type;
+        if (type == 0) return "Treasure Card";
+        else if (type == 1) return  "Victory Card";
+        else return "Action Card";
     }
 }

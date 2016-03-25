@@ -2,8 +2,6 @@ package dominion;
 
 import java.util.ArrayList;
 
-// Waarom gebruiken we eigenlijk inheritants ? is er daar een reden voor dionys?? kunnen we niet beter gewoon 3 klassen maken voor de soorten kaarten ?
-//ander los als de f*** shit op da nie werkt door inheritance 
 public class Maintester 
 {
     public static void main(String[] args)
@@ -23,14 +21,12 @@ public class Maintester
                 Card cardFromDeck = deck.get(j);
                 System.out.println("Name: " + cardFromDeck.getName());
                 System.out.println("Cost: " + cardFromDeck.getCost());
-                if (cardFromDeck.getType() == 0) System.out.println("Value: " + cardFromDeck.getTreasurePoints());
+                if (cardFromDeck.getType().equals("Treasure Card")) System.out.println("Money: " + ((TreasureCard) cardFromDeck).getTreasurePoints());
+                if (cardFromDeck.getType().equals("Victory Card")) System.out.println("Victory Points: " + ((VictoryCard) cardFromDeck).getVictoryPoints());
                 System.out.println("Type: " + cardFromDeck.getType());
                 System.out.println();
             }
         }
-        
-        TreasureCard tcard = new TreasureCard("Diamant",100, 90);
-        System.out.println(tcard.getTreasurePoints());
         
         /*while (!winconditie)
         {
