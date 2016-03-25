@@ -4,8 +4,8 @@ public class Turn
 {
 	private int actions;
 	private int buys;
-        private boolean isOver;
         private int money;
+        private boolean isOver;
 	
 	public Turn()
 	{

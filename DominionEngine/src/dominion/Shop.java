@@ -4,12 +4,16 @@ import java.util.*;
 
 public class Shop 
 {
-    private ArrayList<ShopCard> Collection;
+    private ArrayList<ShopCard> Collection; //first card (curse card, index 0) CANT BE SOLD
+    private boolean gameOver;
     
     public Shop() //default constructor met standaard actionkaarten
     {
         
-        Collection = new ArrayList(16);
+        Collection = new ArrayList(17);
+        
+        //Curse Card in shop CANT BE SOLD (index 0)
+        Collection.add(new ShopCard("Curse",10));
         
         //Treasure Cards in Shop
         Collection.add(new ShopCard("Copper", 60));
@@ -36,12 +40,20 @@ public class Shop
     
     public void cardPurchase(int index)
     {
-        Collection.get(index).reduceAmount();
+        Collection.get(index).reduceAmount(); //Indexes start from 1 because 0 is NOT for sale (curse card)
     }
     
-    public boolean isEmpty(int index)
+    public Collection getCollection()
     {
-        return Collection.get(index).getAmount() == 0;
+        return Collection;
     }
     
+    public boolean isGameOver()
+    {
+        int totaal = 0;
+        for (int i = 0; i < 16; i++) if(Collection.get(i).getAmount() == 0) totaal ++;
+        
+        if (Collection.get(6).getAmount() == 0 || totaal == 3) return true;
+        else return false;
+    }
 }
