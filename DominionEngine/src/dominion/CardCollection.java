@@ -8,13 +8,6 @@ public class CardCollection
     private ArrayList<Card> discard;
     private ArrayList<Card> supply;
     
-    //TreasureCard tc1 = new TreasureCard("Copper", 0, 1);
-    //TreasureCards tc2 = new TreasureCards("Silver", 3, 2);
-    //TreasureCards tc3 = new TreasureCards("Gold", 6, 3);
-    //VictoryCard vc1 = new VictoryCard("Estate", 2, 1);
-    //VictoryCard vc2 = new VictoryCard("Duchy", 5, 3);
-    //VictoryCard vc3 = new VictoryCard("Province", 8, 6);
-    
     public CardCollection()
     {
         deck = new ArrayList(100);
@@ -47,7 +40,7 @@ public class CardCollection
     {
         for (int i = 0; i < amount; i++)
         {
-            if (deck.isEmpty()) discardToDeck();
+            if (deck.isEmpty()) discardPileToDeck();
             supply.add(deck.get(0));
             deck.remove(0);
         }
@@ -58,7 +51,7 @@ public class CardCollection
         supply.remove(index);
     }
     
-    public void discardToDeck()
+    public void discardPileToDeck()
     {
         deck = (ArrayList) discard.clone();
         discard.clear();
@@ -68,5 +61,10 @@ public class CardCollection
     public void shuffleDeck()
     {
         Collections.shuffle(deck);
+    }
+    
+    public void addNewCardToDiscard(Card card)
+    {
+        discard.add(card);
     }
 }

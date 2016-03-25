@@ -33,6 +33,9 @@ public class Maintester
             turn.p1;
             game.player.collection.deck.takeCards
             turn.p2;
-        }*/        
+        }*/  
+        Shop shop = new Shop();
+        for (int i = 0; i < 10; i++) shop.cardPurchase(8);
+        System.out.println(shop.isEmpty(8));
     }
 }

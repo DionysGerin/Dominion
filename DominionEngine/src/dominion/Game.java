@@ -5,7 +5,7 @@ import java.util.*;
 public class Game 
 {
 	private ArrayList<Player> players;
-	private ArrayList<ActionCard> choosenShop;
+	private ArrayList<Card> shop;
         
         public Game(Player player1, Player player2/*, ActionCard card1, ActionCard card2, ActionCard card3, ActionCard card4, ActionCard card5, ActionCard card6, ActionCard card7, ActionCard card8, ActionCard card9, ActionCard card10*/)
         {
@@ -13,7 +13,7 @@ public class Game
             players.add(player1);
             players.add(player2);
             
-            choosenShop = new ArrayList(10);
+            shop = new ArrayList(10);
             /*choosenShop.add(card1);
             choosenShop.add(card2);
             choosenShop.add(card3);
