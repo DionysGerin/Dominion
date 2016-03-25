@@ -35,9 +35,10 @@ public class Maintester
             turn.p2;
         }*/  
         Shop shop = new Shop();
-        for (int i = 0; i < 10; i++) shop.cardPurchase(6);
+        for (int i = 0; i < 10; i++) shop.cardPurchase(8);
+        for (int i = 0; i < 10; i++) shop.cardPurchase(10);
+        for (int i = 0; i < 10; i++) shop.cardPurchase(12);
         
-        //die get werkt niet met de collectie, los het op!
-        //System.out.println(shop.getCollection().get(6));
+        System.out.println(shop.isGameOver());
     }
 }

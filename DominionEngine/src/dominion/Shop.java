@@ -43,6 +43,11 @@ public class Shop
         Collection.get(index).reduceAmount(); //Indexes start from 1 because 0 is NOT for sale (curse card)
     }
     
+    public ShopCard getShopCard(int index)
+    {
+        return Collection.get(index);
+    }
+    
     public Collection getCollection()
     {
         return Collection;

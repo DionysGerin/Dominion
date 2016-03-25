@@ -67,4 +67,14 @@ public class CardCollection
     {
         discard.add(card);
     }
+    
+    public void trashCard(int index)
+    {
+        supply.remove(index);
+    }
+    
+    public void deckPileToDiscard()
+    {
+        //voeg extra methode toe, kijk op API, is een clone bij descardPileToDeck methode nodig? 
+    }
 }

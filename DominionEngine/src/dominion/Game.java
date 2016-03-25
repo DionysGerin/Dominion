@@ -11,11 +11,23 @@ public class Game
         {
             players = new ArrayList(9);
             players.add(player1);
-            players.add(player2);            
+            players.add(player2);
+            
+            shop = new Shop();
         }
         
         public ArrayList<Player> getPlayers()
         {
             return players;
+        }
+        
+        public Player getPlayer(int index)
+        {
+            return players.get(index);
+        }
+        
+        public Shop getShop()
+        {
+            return shop;
         }
 }
