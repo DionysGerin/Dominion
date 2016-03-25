@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/DominionEngine/src/dominion/Card.java</file>
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/DominionEngine/src/dominion/ActionCard.java</file>
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/DominionEngine/src/dominion/TreasureCard.java</file>
@@ -10,6 +11,10 @@
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/DominionEngine/src/dominion/CardCollection.java</file>
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/DominionEngine/src/dominion/VictoryCard.java</file>
             <file>file:/C:/Users/Dionys/Documents/GitHub/Noinimod/DominionEngine/src/dominion/Game.java</file>
+=======
+            <file>file:/C:/Users/lars/Documents/GitHub/Noinimod/Dominion/src/dominion/Card.java</file>
+            <file>file:/C:/Users/lars/Documents/GitHub/Noinimod/Dominion/src/Gui/Startpagina.java</file>
+>>>>>>> bf5cfd370291a781817097d431baf81276df3ea4
         </group>
     </open-files>
 </project-private>
