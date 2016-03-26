@@ -6,10 +6,13 @@ public class Shop
 {
     private ArrayList<ShopCard> shopCollection; //first card (curse card, index 0) CANT BE SOLD
     private boolean gameOver;
+    private CardCreator cardCreator;
     
     public Shop() //default constructor met standaard actionkaarten
     {
+        cardCreator = new CardCreator();
         shopCollection = new ArrayList(17);
+        
         
         //Curse Card in shop CANT BE SOLD (index 0)
         shopCollection.add(new ShopCard("Curse",10));

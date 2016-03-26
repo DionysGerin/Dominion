@@ -87,8 +87,8 @@ public class Maintester
                         turn.reduceBuys();
                         game.getShop().getShopCard(buyChoice).reduceAmount(); //ok dit zal niet lukken, we moeten de shop aanpassen en in ShopCard de Card steken die erbij hoort,
                         //dan kunnne we die returnen en verwijderen en is kopen 1000% makkelijker!!!
-                        game.getShop().getShopCard(buyChoice).getName()
-                        game.getPlayer(playerIndex).getCardCollection().addNewCardToDiscard(card);
+                        game.getShop().getShopCard(buyChoice).getName();
+                        game.getPlayer(playerIndex).getCardCollection().addNewCardToDiscard(card); //moet naar gekocht kaart (nieuw object) verwijzen
                     }
                     break;
                 case 3: //end turn
