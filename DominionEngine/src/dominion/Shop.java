@@ -6,14 +6,13 @@ public class Shop
 {
     private ArrayList<ShopCard> shopCollection; //first card (curse card, index 0) CANT BE SOLD
     private boolean gameOver;
-    private CardCreator cardCreator;
+    
     
     public Shop() //default constructor met standaard actionkaarten
     {
-        cardCreator = new CardCreator();
+        
         shopCollection = new ArrayList(17);
-        
-        
+       
         //Curse Card in shop CANT BE SOLD (index 0)
         shopCollection.add(new ShopCard("Curse",10));
         
@@ -40,11 +39,10 @@ public class Shop
         shopCollection.add(new ShopCard("Workshop", 10));     
     }
     
-    public Card cardPurchase(int index)
+    public void cardPurchase(int index)
     {
-        shopCollection.get(index).reduceAmount(); //Indexes start from 1 because 0 is NOT for sale (curse card)
-        
-        if ()
+        shopCollection.get(index).reduceAmount(); //Indexes start from 1 because 0 is NOT for sale (curse card) 
+            
     }
     
     public ShopCard getShopCard(int index)
