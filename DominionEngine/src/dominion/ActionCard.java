@@ -1,13 +1,13 @@
 package dominion;
 
+import java.util.*;
+
 public class ActionCard extends Card
 {
-    private String ability;
+    private int[] ability;
     
-    public ActionCard(String name, int cost, String ability)
+    public ActionCard(String name, int cost)
     {
-        super(name, cost, 2);
-        this.ability = ability;        
-    }
-            
+        super(name, cost, 2);      
+    }           
 }

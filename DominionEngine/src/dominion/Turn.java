@@ -19,6 +19,11 @@ public class Turn
 	{
             return actions;
 	}
+        
+        public void setActionsToZero()
+        {
+            actions = 0;
+        }
 	
 	public int getBuys()
 	{
@@ -57,13 +62,11 @@ public class Turn
 	
 	public void endTurn()
 	{
-            actions = 0;
-            buys = 0;
             isOver = true;
 	}
         
         public boolean isOver()
         {
-            return isOver;
+            return (buys == 0 || isOver);
         }
 }
