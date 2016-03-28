@@ -72,12 +72,18 @@ public class Maintester
                     while (playMoreCards)
                     {
                         System.out.println("Which treasurecard do you want to use to buy?");
+                        // added by anas
+                         printSupply(playerIndex);
+                        //----
                         int playChoice = choiceScanner.nextInt();
                         game.getPlayer(playerIndex).getCardCollection().playCard(playChoice);
                         System.out.println("Play more cards?(No = 0, Yes = 1");
                         int moreChoice = choiceScanner.nextInt();
                         if (moreChoice == 0) playMoreCards = false;
                         else playMoreCards = true;
+                        // added by anas
+                        if (game.getPlayer(playerIndex).getCardCollection().getSupply().isEmpty()) playMoreCards = false;
+                        //----
                     }
                     
                     System.out.println("What card do you want to buy?");
