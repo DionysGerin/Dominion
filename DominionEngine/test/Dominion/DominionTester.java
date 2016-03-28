@@ -6,7 +6,20 @@
 package Dominion;
 
 import dominion.Player;
-import org.junit.Test;
+import dominion.ActionCard;
+import dominion.Card;
+import dominion.CardCollection;
+import dominion.CardCreator;
+import dominion.Game;
+import dominion.Maintester;
+import dominion.MySQLConnector;
+import dominion.Shop;
+import dominion.ShopCard;
+import dominion.TreasureCard;
+import dominion.Turn;
+import dominion.VictoryCard;
+
+import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
@@ -14,14 +27,19 @@ import static org.junit.Assert.*;
  * @author Anas Hamaideh
  */
 public class DominionTester {
-    
+
+    private String someplayer;
+    private Player testplayer;
+
+    @Before
+    public void setUP() {
+        someplayer = "rob";
+        testplayer = new Player(someplayer);
+    }
+
     @Test
     public void getplayer() {
-        String someplayer = "rob";
-        Player a;
-        a = new Player(someplayer);
-
-        assertEquals(someplayer, a.getPlayerName());
+        assertEquals(someplayer, testplayer.getPlayerName());
     }
-}
 
+}
