@@ -25,7 +25,7 @@ public class Card
     
     public String getType()
     {
-        // hier beter switch dan 3 if's  in elkaar
+        // hier beter switch dan 3 if's  in elkaar 
         switch (type) {
             case 0:
                 return "Treasure Card";

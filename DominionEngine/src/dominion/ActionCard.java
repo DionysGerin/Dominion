@@ -4,7 +4,7 @@ package dominion;
 
 public class ActionCard extends Card
 {
- //   private int[] ability;      //moet nog afgewerkt worden
+    private int[] ability;      //moet nog afgewerkt worden
     
     public ActionCard(String name, int cost)
     {

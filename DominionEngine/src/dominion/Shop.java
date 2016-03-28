@@ -54,8 +54,8 @@ public class Shop
     {
         return shopCollection;
     }
-    // kunnen we dit niet bij andere klasse schrijven want hoort niet bij shop ? wat vinden jullie hier van
-    public boolean isGameOver()
+    
+    public boolean isGameOver() // nieuwe naam winCondition
     {
         int totaal = 0;
         for (int i = 0; i < 16; i++) if(shopCollection.get(i).getAmount() == 0) totaal ++;

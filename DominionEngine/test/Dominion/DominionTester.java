@@ -18,6 +18,8 @@ import dominion.ShopCard;
 import dominion.TreasureCard;
 import dominion.Turn;
 import dominion.VictoryCard;
+// added by lars 
+import dominion.*; // is dit ok ???
 
 import org.junit.*;
 import static org.junit.Assert.*;
