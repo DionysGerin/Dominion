@@ -30,6 +30,7 @@ public class Maintester
         Player player2 = new Player(name2);
         
         game = new Game(player1, player2);
+        
         gameLoop();
     }
     
