@@ -4,10 +4,10 @@ package dominion;
 
 public class ActionCard extends Card
 {
-    private int[] ability;
+ //   private int[] ability;      //moet nog afgewerkt worden
     
     public ActionCard(String name, int cost)
     {
-        super(name, cost, 2);      
+        super(name, cost, 2);
     }           
 }

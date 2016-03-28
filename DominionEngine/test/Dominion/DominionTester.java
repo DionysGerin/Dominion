@@ -5,8 +5,8 @@
  */
 package Dominion;
 
-import dominion.*;
-import org.junit.*;
+import dominion.Player;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
@@ -15,6 +15,13 @@ import static org.junit.Assert.*;
  */
 public class DominionTester {
     
- 
-    
+    @Test
+    public void getplayer() {
+        String someplayer = "rob";
+        Player a;
+        a = new Player(someplayer);
+
+        assertEquals(someplayer, a.getPlayerName());
+    }
 }
+
