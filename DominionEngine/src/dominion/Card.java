@@ -25,8 +25,14 @@ public class Card
     
     public String getType()
     {
-        if (type == 0) return "Treasure Card";
-        else if (type == 1) return  "Victory Card";
-        else return "Action Card";
+        // hier beter switch dan 3 if's  in elkaar
+        switch (type) {
+            case 0:
+                return "Treasure Card";
+            case 1:
+                return  "Victory Card";
+            default:
+                return "Action Card";
+        }
     }
 }

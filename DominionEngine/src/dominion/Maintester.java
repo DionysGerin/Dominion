@@ -30,6 +30,7 @@ public class Maintester
         Player player2 = new Player(name2);
         
         game = new Game(player1, player2);
+        
         gameLoop();
     }
     
@@ -70,13 +71,20 @@ public class Maintester
                     boolean playMoreCards = true;
                     while (playMoreCards)
                     {
+                        
                         System.out.println("Which treasurecard do you want to use to buy?");
+                        // added by anas
+                         printSupply(playerIndex);
+                        //----
                         int playChoice = choiceScanner.nextInt();
-                        game.getPlayer(playerIndex).getCardCollection().playCard(playChoice);
+                        game.getPlayer(playerIndex).getCardCollection().playCard(playChoice - 1);// -1 omdat je bij 0 begint
                         System.out.println("Play more cards?(No = 0, Yes = 1");
                         int moreChoice = choiceScanner.nextInt();
                         if (moreChoice == 0) playMoreCards = false;
                         else playMoreCards = true;
+                        // added by anas
+                        if (game.getPlayer(playerIndex).getCardCollection().getSupply().isEmpty()) playMoreCards = false;
+                        //----
                     }
                     
                     System.out.println("What card do you want to buy?");

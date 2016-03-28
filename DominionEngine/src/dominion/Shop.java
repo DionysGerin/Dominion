@@ -54,7 +54,7 @@ public class Shop
     {
         return shopCollection;
     }
-    
+    // kunnen we dit niet bij andere klasse schrijven want hoort niet bij shop ? wat vinden jullie hier van
     public boolean isGameOver()
     {
         int totaal = 0;
