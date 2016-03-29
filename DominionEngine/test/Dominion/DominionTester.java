@@ -41,5 +41,7 @@ public class DominionTester {
     public void getplayer() {
         assertEquals(someplayer, testplayer.getPlayerName());
     }
+    
+    @Test
 
 }

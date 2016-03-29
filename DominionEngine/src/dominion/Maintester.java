@@ -71,8 +71,10 @@ public class Maintester
                     boolean playMoreCards = true;
                     while (playMoreCards)
                     {
-                        
                         System.out.println("Which treasurecard do you want to use to buy?");
+                        // Laat dit hier staan is gemakelijker voor te testen danku
+                        printSupply(playerIndex);
+                        //----
                         int playChoice = choiceScanner.nextInt();
                         game.getPlayer(playerIndex).getCardCollection().playCard(playChoice - 1);// -1 omdat je bij 0 begint
                         System.out.println("Play more cards?(No = 0, Yes = 1");
