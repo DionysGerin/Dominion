@@ -38,6 +38,11 @@ public class CardCollection
         return supply;
     }
     
+    public ArrayList<Card> getTable()
+    {
+        return supply;
+    }
+    
     public void drawCard(int amount)
     {
         for (int i = 0; i < amount; i++)
