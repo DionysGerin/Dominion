@@ -106,7 +106,4 @@ public class DominionTester {
         assertEquals(0, playerCards.getTable().size());
     }
     
-    
-    
-    
 }
