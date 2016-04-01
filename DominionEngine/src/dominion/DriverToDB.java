@@ -3,29 +3,27 @@ import java.sql.*;
 
 public class DriverToDB
 {
-	public static void main(String[] args) thows SQLException
+	public static void main(String[] args) throws SQLException
 	{
 		String url = "jdbc:mysql://localhost:8080/Dominion";
-		String user = "username":
+		String user = "username";
 		String password ="password";
-		Connection con;
-		Statement statm;
+		Connection con = null;
+		Statement statm = null;
 		try
 		{
-			Connection con = DriverManager.getconnnection(url, user , password)
-			Statement Statm = con.createStatement();
+			con = DriverManager.getConnection(url, user , password);
+			statm = con.createStatement();
 			String sql = "this is the sql insert statement"
 					   + "seperate the lines with a concatination sign (+)";
-			statm.executeUpdate(Dominion)
-		}
-		catch (Exception e) 
+			statm.executeUpdate(Dominion);
+		} catch (Exception e) 
 		{
 			e.printStackTrace();
-		} 
-		finally 
+		} finally 
 		{
-		if (statm != null) statm.close();
-		if (con != null) myConn.close();
+                    if (statm != null) statm.close();
+                    if (con != null) con.close();
 		}
 	}
 }
