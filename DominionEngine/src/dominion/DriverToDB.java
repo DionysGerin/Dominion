@@ -1,14 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dominion;
+import java.sql.*;
 
-/**
- *
- * @author Dionys
- */
-public class DriverToDB {
-    
+public class DriverToDB
+{
+	public static void main(String[] args) thows SQLException
+	{
+		String url = "jdbc:mysql://localhost:8080/Dominion";
+		String user = "username":
+		String password ="password";
+		Connection con;
+		Statement statm;
+		try
+		{
+			Connection con = DriverManager.getconnnection(url, user , password)
+			Statement Statm = con.createStatement();
+			String sql = "this is the sql insert statement"
+					   + "seperate the lines with a concatination sign (+)";
+			statm.executeUpdate(Dominion)
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		} 
+		finally 
+		{
+		if (statm != null) statm.close();
+		if (con != null) myConn.close();
+		}
+	}
 }
