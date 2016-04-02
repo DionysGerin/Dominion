@@ -15,8 +15,8 @@ public class DriverFromDB
 		Statement statm = null;
 		try 
 		{
-                    Class.forName(JDBC_DRIVER); //geeft een driver om te kunnen connecten, probleem want hij vind de juiste blijkbaar niet, dus we zullen met tomcat moeten werken wrs? 
-                    // maar dat lukt niet zonder glassfish in netbeans, ik kan het gelik niet installere, dan maar terug naar eclipse? Zo'n werk!
+                    Class.forName("com.mysql.jdbc.Driver"); //Ik heb de jar file toegevoegd aan de build path/library van het project, zodat hij de MySQLconnector.jar gebruikt om de lokale
+                    // netbeans services te kunnen gebruiken, aka de inbuild database! We moeten dus niet naar eclipse weer overschakelen!
                     
                     con = DriverManager.getConnection(DB_URL, USER, PASS);
                     statm = con.createStatement();
