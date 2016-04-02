@@ -16,7 +16,7 @@ public class CardCreatorFromDB
 		try 
 		{
                     Class.forName(JDBC_DRIVER); //Ik heb de jar file toegevoegd aan de build path/library van het project, zodat hij de MySQLconnector.jar gebruikt om de lokale
-                    // netbeans services te kunnen gebruiken, aka de inbuild database! We moeten dus niet naar eclipse weer overschakelen
+                    // netbeans services te kunnen gebruiken, aka de inbuild database! We moeten dus niet naar eclipse weer overschakelen!
                     
                     con = DriverManager.getConnection(DB_URL, USER, PASS);
                     statm = con.createStatement();
