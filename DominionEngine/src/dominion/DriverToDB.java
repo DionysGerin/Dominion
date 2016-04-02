@@ -16,7 +16,7 @@ public class DriverToDB
 			statm = con.createStatement();
 			String sql = "this is the sql insert statement"
 					   + "seperate the lines with a concatination sign (+)";
-			statm.executeUpdate(Dominion);
+			//statm.executeUpdate(Dominion); DIT WERKT NOG NIET, GEEN IDEE WAT LARS MET DOMINION BEDOELT, DIT ZAL LARS AANPASSEN TIJDENS VOLGEND SKYPE GESPREK
 		} catch (Exception e) 
 		{
 			e.printStackTrace();

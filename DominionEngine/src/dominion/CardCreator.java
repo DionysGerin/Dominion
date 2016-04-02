@@ -9,12 +9,12 @@ public class CardCreator {
         return new TreasureCard(name, cost, value);
     }
                 
-    public ActionCard makeActionCard(String name,int cost)
+    public KingdomCard makeActionCard(String name,int cost)
     {
         //connector aanspreken
         
         
-        return new ActionCard(name, cost);
+        return new KingdomCard(name, cost);
     }
             
     public VictoryCard makeVictoryCard(String name,int cost, int value)

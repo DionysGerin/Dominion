@@ -2,11 +2,11 @@ package dominion;
 
 // import java.util.*; useless import
 
-public class ActionCard extends Card
+public class KingdomCard extends Card
 {
     private int[] ability;      //moet nog afgewerkt worden
     
-    public ActionCard(String name, int cost)
+    public KingdomCard(String name, int cost)
     {
         super(name, cost, 2);
     }           

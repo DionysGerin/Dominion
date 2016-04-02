@@ -6,7 +6,7 @@
 package Dominion;
 
 import dominion.Player;
-import dominion.ActionCard;
+import dominion.KingdomCard;
 import dominion.Card;
 import dominion.CardCollection;
 import dominion.CardCreator;
