@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Shop 
 {
-    private ArrayList<ShopCard> shopCollection; //first card (curse card, index 0) CANT BE SOLD
+    private ArrayList<ShopCard> shopCollection; //De 10 gekozen kaarten zullen gekozne moeten worden uit alle mogelijke kaarten, deze worden aan de spelers via de databank weergegeven
     private boolean gameOver;
     
     
@@ -13,7 +13,7 @@ public class Shop
         
         shopCollection = new ArrayList(17);
        
-        //Curse Card in shop CANT BE SOLD (index 0)
+        //Curse Card in shop
         shopCollection.add(new ShopCard("Curse",10));
         
         //Treasure Cards in Shop
@@ -41,7 +41,7 @@ public class Shop
     
     public void cardPurchase(int index)
     {
-        shopCollection.get(index).reduceAmount(); //Indexes start from 1 because 0 is NOT for sale (curse card) 
+        shopCollection.get(index).reduceAmount();
             
     }
     

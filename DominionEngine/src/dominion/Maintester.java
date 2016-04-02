@@ -1,14 +1,25 @@
 package dominion;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class Maintester 
 {
     private Game game; 
     
-    public static void main(String[] args)
+    public static void main(String[] args) throws SQLException
     {
-        Maintester testGame = new Maintester();
+        //Maintester testGame = new Maintester();
+        CardCreatorFromDB cardCreator = new CardCreatorFromDB();
+        TreasureCard tc = cardCreator.returnTreasureCard("gold");
+        VictoryCard vc = cardCreator.returnVictoryCard("province");
+        KingdomCard kc = cardCreator.returnKingdomCard("mine");
+        
+        System.out.println(tc.getName() + " Cost: " + tc.getCost() + " Value: " + tc.getTreasurePoints());
+        System.out.println(vc.getName() + " Cost: " + vc.getCost() + " Value: " + vc.getVictoryPoints());
+        System.out.println(kc.getName() + " Cost: " + kc.getCost());
+
+
     }
     
     

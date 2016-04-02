@@ -5,7 +5,7 @@ import java.util.*;
 public class Game 
 {
 	private ArrayList<Player> players;
-	private Shop shop;
+	private Shop shop; //We zullen hier de 10 gekozen kaarten moeten meegeven
         
         public Game(Player player1, Player player2)
         {

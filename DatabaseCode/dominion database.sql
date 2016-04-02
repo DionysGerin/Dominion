@@ -16,19 +16,19 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`dbdominion` /*!40100 DEFAULT CHARACTER 
 
 USE `dbdominion`;
 
-/*Table structure for table `actioncard` */
+/*Table structure for table `kingdomcard` */
 
-DROP TABLE IF EXISTS `actioncard`;
+DROP TABLE IF EXISTS `kingdomcard`;
 
-CREATE TABLE `actioncard` (
+CREATE TABLE `kingdomcard` (
   `ActCrdNr` int(11) DEFAULT NULL,
   `cardnumber` int(11) NOT NULL,
   PRIMARY KEY (`cardnumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*Data for the table `actioncard` */
+/*Data for the table `kingdomcard` */
 
-insert  into `actioncard`(`ActCrdNr`,`cardnumber`) values 
+insert  into `kingdomcard`(`ActCrdNr`,`cardnumber`) values 
 (1,8),
 (2,9),
 (3,10),
@@ -70,28 +70,28 @@ CREATE TABLE `cards` (
 /*Data for the table `cards` */
 
 insert  into `cards`(`cardnumber`,`cardname`,`cost`,`cardtype`) values 
-(1,'Copper',0,'Treasure\n'),
+(1,'Copper',0,'Treasure'),
 (2,'Silver',3,'Treasure'),
-(3,'Gold\n',6,'Treasure'),
-(4,'Estate\n',2,'Victory\n'),
+(3,'Gold',6,'Treasure'),
+(4,'Estate',2,'Victory'),
 (5,'Duchy',5,'Victory'),
 (6,'Province',8,'Victory'),
-(7,'Curse\n',0,'Victory'),
-(8,'Cellar',2,'Action\n'),
-(9,'Chapel',2,'Action\n'),
-(10,'Moat',2,'Action\n'),
-(11,'Workshop\n',3,'Action\n'),
-(12,'Chancellor',3,'Action\n'),
-(13,'Village',3,'Action\n'),
-(14,'Woodcutter',3,'Action\n'),
-(15,'Feast\n',4,'Action'),
+(7,'Curse',0,'Victory'),
+(8,'Cellar',2,'Action'),
+(9,'Chapel',2,'Action'),
+(10,'Moat',2,'Action'),
+(11,'Workshop',3,'Action'),
+(12,'Chancellor',3,'Action'),
+(13,'Village',3,'Action'),
+(14,'Woodcutter',3,'Action'),
+(15,'Feast',4,'Action'),
 (16,'Militia',4,'Action'),
-(17,'Moneylender\n',4,'Action'),
-(18,'Remodel\n',4,'Action'),
+(17,'Moneylender',4,'Action'),
+(18,'Remodel',4,'Action'),
 (19,'Bureaucrat',4,'Action'),
 (20,'Smithy',4,'Action'),
 (21,'Spy',4,'Action'),
-(22,'Thief\n',4,'Action'),
+(22,'Thief',4,'Action'),
 (23,'Trone Room',4,'Action'),
 (24,'Gardens',4,'Action'),
 (25,'Council Room',5,'Action'),
