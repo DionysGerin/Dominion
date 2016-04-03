@@ -1,23 +1,25 @@
 package dominion;
 import java.sql.*;
+import java.util.*;
 
-public class CardCreatorFromDB
+public class SupplyCardCreatorFromDB
 {	
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
     static final String DB_URL = "jdbc:mysql://localhost:3306/dbdominion";
    
     static final String USER = "root";
     static final String PASS = "";
-   
-    public TreasureCard returnTreasureCard(String treasureCardName) throws SQLException 
+        
+    public ArrayList<TreasureCard> returnTreasureCardSupply(String treasureCardName, int amount) throws SQLException 
     {
         //Variabelen voor de connectie
         Connection con = null;
         Statement statm = null;
 
-        //Variabelen voor de creatie van de kaart
+        //Variabelen voor de creatie van de supplycard
         int cost = 0;
         int value = 0;
+        ArrayList<TreasureCard> supplyCard = new ArrayList(10);
 
         try 
         {
@@ -27,16 +29,18 @@ public class CardCreatorFromDB
             //Connectie opstellen en een resultaatset ophalen van de gegevens dat we nodig hebben
             con = DriverManager.getConnection(DB_URL, USER, PASS);
             statm = con.createStatement();
-
-            ResultSet res = statm.executeQuery("select * from cards where cardname = '" + treasureCardName + "'"); // geloof het of niet, maar er zat een enter in de databse voor gold, nice
+            
+            String sql = "select * from cards where cardname = '" + treasureCardName + "'";
+            ResultSet res = statm.executeQuery(sql); // geloof het of niet, maar er zat een enter in de databse voor gold, nice
             //De resultaatset verdelen in variabelen zodat we ze apart kunnen gebruiken
 
             //PART ONE, de cost ophalen uit de tabel cards                    
-            cost = res.getInt("cost");
+            if (res.next()) cost = res.getInt("cost"); //Je moet res.next()callen en checken of die true is om de eerste lijn te van de resultaatset vast te krijgen 
 
-            res = statm.executeQuery("select * from treasurecard where cardnumber = (select cardnumber from cards where cardname = ')" + treasureCardName + "'");
+            sql = "select * from treasurecard where cardnumber = (select cardnumber from cards where cardname = '" + treasureCardName + "')";
+            res = statm.executeQuery(sql);
             //PART TWO, de value van de treasurecard ophalen
-            value = res.getInt("value");
+            if (res.next()) value = res.getInt("value");
 
             //Alles sluiten van de connectie dat we niet meer nodig hebben of zullen gebruiken, wordt opnieuw geinitialiseerd als we meer gegevens nodig hebben
             res.close();
@@ -48,11 +52,12 @@ public class CardCreatorFromDB
             e.printStackTrace();
         }
 
-        //Hier zullen we het kaart object maken met de opgevangen gegevens en returnen naar het object die het nodig heeft
-        return new TreasureCard(treasureCardName, cost, value);
+        for (int i = 0; i < amount; i++) supplyCard.add(new TreasureCard(treasureCardName, cost, value));
+        
+        return supplyCard;
     }
     
-    public VictoryCard returnVictoryCard(String victoryCardName) throws SQLException 
+    public ArrayList<VictoryCard> returnVictoryCardSupply(String victoryCardName, int amount) throws SQLException 
     {
         //Variabelen voor de connectie
         Connection con = null;
@@ -61,6 +66,7 @@ public class CardCreatorFromDB
         //Variabelen voor de creatie van de kaart
         int cost = 0;
         int value = 0;
+        ArrayList<VictoryCard> supplyCard = new ArrayList(10);
 
         try 
         {
@@ -70,16 +76,18 @@ public class CardCreatorFromDB
             //Connectie opstellen en een resultaatset ophalen van de gegevens dat we nodig hebben
             con = DriverManager.getConnection(DB_URL, USER, PASS);
             statm = con.createStatement();
-
-            ResultSet res = statm.executeQuery("select * from cards where cardname = '" + victoryCardName + "'");
+            
+            String sql = "select * from cards where cardname = '" + victoryCardName + "'";
+            ResultSet res = statm.executeQuery(sql);
             //De resultaatset verdelen in variabelen zodat we ze apart kunnen gebruiken
 
             //PART ONE, de cost ophalen uit de tabel cards                    
-            cost = res.getInt("cost");
+            if (res.next()) cost = res.getInt("cost");
 
-            res = statm.executeQuery("select * from treasurecard where cardnumber = (select cardnumber from cards where cardname = '" + victoryCardName + "')");
+            sql = "select * from victorycard where cardnumber = (select cardnumber from cards where cardname = '" + victoryCardName + "')";
+            res = statm.executeQuery(sql);
             //PART TWO, de value van de victorycard ophalen
-            value = res.getInt("value");
+            if (res.next()) value = res.getInt("value");
 
             //Alles sluiten van de connectie dat we niet meer nodig hebben of zullen gebruiken, wordt opnieuw geinitialiseerd als we meer gegevens nodig hebben
             res.close();
@@ -91,11 +99,12 @@ public class CardCreatorFromDB
             e.printStackTrace();
         }
 
-        //Hier zullen we het kaart object maken met de opgevangen gegevens en returnen naar het object die het nodig heeft
-        return new VictoryCard(victoryCardName, cost, value);
+        for (int i = 0; i < amount; i++) supplyCard.add(new VictoryCard(victoryCardName, cost, value));
+        
+        return supplyCard;
     }
     
-    public KingdomCard returnKingdomCard(String kingdomCardName) throws SQLException 
+    public ArrayList<KingdomCard> returnKingdomCardSupply(String kingdomCardName, int amount) throws SQLException 
     {
         //Variabelen voor de connectie
         Connection con = null;
@@ -104,6 +113,7 @@ public class CardCreatorFromDB
         //Variabelen voor de creatie van de kaart
         int cost = 0;
         int value = 0;
+        ArrayList<KingdomCard> supplyCard = new ArrayList(10);
 
         try 
         {
@@ -114,11 +124,12 @@ public class CardCreatorFromDB
             con = DriverManager.getConnection(DB_URL, USER, PASS);
             statm = con.createStatement();
 
-            ResultSet res = statm.executeQuery("select * from cards where cardname = '" + kingdomCardName + "'");
+            String sql = "select * from cards where cardname = '" + kingdomCardName + "'";
+            ResultSet res = statm.executeQuery(sql);
             //De resultaatset verdelen in variabelen zodat we ze apart kunnen gebruiken
 
             //PART ONE, de cost ophalen uit de tabel cards                    
-            cost = res.getInt("cost");
+            if (res.next()) cost = res.getInt("cost");
 
             //PART TWO, hier zouden de acties moeten zitten, die zijn nog niet geimplementeerd!!
 
@@ -132,7 +143,8 @@ public class CardCreatorFromDB
             e.printStackTrace();
         }
 
-        //Hier zullen we het kaart object maken met de opgevangen gegevens en returnen naar het object die het nodig heeft
-        return new KingdomCard(kingdomCardName, cost);
+        for (int i = 0; i < amount; i++) supplyCard.add(new KingdomCard(kingdomCardName, cost));
+
+        return supplyCard;
     }
 }

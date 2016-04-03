@@ -5,7 +5,7 @@ import java.util.*;
 public class Game 
 {
 	private ArrayList<Player> players;
-	private Shop shop; //We zullen hier de 10 gekozen kaarten moeten meegeven
+	private Supply supply; //We zullen hier de 10 gekozen kaarten moeten meegeven
         
         public Game(Player player1, Player player2)
         {
@@ -13,7 +13,7 @@ public class Game
             players.add(player1);
             players.add(player2);
             
-            shop = new Shop();
+            supply = new Supply();
         }
         
         public ArrayList<Player> getPlayers()
@@ -26,8 +26,8 @@ public class Game
             return players.get(index);
         }
         
-        public Shop getShop()
+        public Supply getSupply()
         {
-            return shop;
+            return supply;
         }
 }

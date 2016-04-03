@@ -5,25 +5,15 @@ import java.util.*;
 
 public class Maintester 
 {
-    private Game game; 
+    private Game game;
     
     public static void main(String[] args) throws SQLException
     {
-        //Maintester testGame = new Maintester();
-        CardCreatorFromDB cardCreator = new CardCreatorFromDB();
-        TreasureCard tc = cardCreator.returnTreasureCard("gold");
-        VictoryCard vc = cardCreator.returnVictoryCard("province");
-        KingdomCard kc = cardCreator.returnKingdomCard("mine");
-        
-        System.out.println(tc.getName() + " Cost: " + tc.getCost() + " Value: " + tc.getTreasurePoints());
-        System.out.println(vc.getName() + " Cost: " + vc.getCost() + " Value: " + vc.getVictoryPoints());
-        System.out.println(kc.getName() + " Cost: " + kc.getCost());
-
-
+        Maintester testGame = new Maintester();
     }
     
     
-    public Maintester()
+    public Maintester() throws SQLException // dit klopt niet, waar moeten we de cardcreator zetten zodat we niet overal de sqlexception moeten throwen
     {
         Scanner nameScanner = new Scanner(System.in);
         System.out.println("Welcome to dominion");
@@ -45,7 +35,7 @@ public class Maintester
         gameLoop();
     }
     
-    public void gameLoop()
+    public void gameLoop() throws SQLException
     {
         int isturn = 0;
         game.getPlayer(0).getCardCollection().drawCard(5);
@@ -59,7 +49,7 @@ public class Maintester
         System.out.println("Game over");
     }
     
-    public void turn(int playerIndex)
+    public void turn(int playerIndex) throws SQLException
     {
         Scanner choiceScanner = new Scanner(System.in);
         Turn turn = new Turn();
@@ -70,10 +60,10 @@ public class Maintester
             printShop();
             printSupply(playerIndex);
             System.out.println("Make a choice:   1. Play Action Card   2. Buy Card   3. End Turn");
-            int Choise = choiceScanner.nextInt();
+            int Choice = choiceScanner.nextInt();
             System.out.println();
             System.out.println();
-            switch(Choise)
+            switch(Choice)
             {
                 case 1: //play action
                     break;
@@ -83,30 +73,28 @@ public class Maintester
                     while (playMoreCards)
                     {
                         System.out.println("Which treasurecard do you want to use to buy?");
-                        // Laat dit hier staan is gemakelijker voor te testen danku
+                        // Nodig?
                         printSupply(playerIndex);
                         //----
                         int playChoice = choiceScanner.nextInt();
-                        game.getPlayer(playerIndex).getCardCollection().playCard(playChoice - 1);// -1 omdat je bij 0 begint
+                        game.getPlayer(playerIndex).getCardCollection().playCard(playChoice);
                         System.out.println("Play more cards?(No = 0, Yes = 1");
                         int moreChoice = choiceScanner.nextInt();
                         if (moreChoice == 0) playMoreCards = false;
-                        else playMoreCards = true;
-                        // added by anas
+                        // temp?
                         if (game.getPlayer(playerIndex).getCardCollection().getSupply().isEmpty()) playMoreCards = false;
-                        //----
                     }
                     
                     System.out.println("What card do you want to buy?");
+                    printShop();
                     int buyChoice = choiceScanner.nextInt();
-                    if (game.getShop().getShopCard(buyChoice).getAmount() > 0)
+                    if (game.getShop().getShopCard(buyChoice).getAmount() > 0) //PROBLEEM: WE WETEN DE KOST NIET VOOR DE KAART GEMAAKT IS, DIT GEBEURT PAS NA HET KOPEN 
+                    //=> ALLE KAARTEN IN HET BEGIN MAKEN OF COST BIJHOUDEN
                     {
                         turn.setActionsToZero();
                         turn.reduceBuys();
-                        game.getShop().getShopCard(buyChoice).reduceAmount(); //ok dit zal niet lukken, we moeten de shop aanpassen en in ShopCard de Card steken die erbij hoort,
-                        //dan kunnne we die returnen en verwijderen en is kopen 1000% makkelijker!!!
-                        game.getShop().getShopCard(buyChoice).getName();
-                        //game.getPlayer(playerIndex).getCardCollection().addNewCardToDiscard(card); //moet naar gekocht kaart (nieuw object) verwijzen
+                        game.getPlayer(playerIndex).getCardCollection().addNewCardToDiscard(game.getShop().cardPurchase(buyChoice));
+                        game.getPlayer(playerIndex).getCardCollection().tablePileToDiscard();
                     }
                     break;
                 case 3: //end turn
@@ -118,6 +106,8 @@ public class Maintester
                     break;
             }
         }
+        game.getPlayer(playerIndex).getCardCollection().discardAllCards();
+        game.getPlayer(playerIndex).getCardCollection().drawCard(5);
     }
     
     public void printPlayerDeck(int playerIndex)
@@ -140,8 +130,8 @@ public class Maintester
     
     public void printShop()
     {
-        System.out.println("Cards in Shop: (Curse Card is not buyable!)");
-        for (ShopCard cards : game.getShop().getShopCollection()) System.out.print(cards.getName() + "(" + cards.getAmount() + ")  "); //foreach?
+        System.out.println("Cards in Shop:");
+        for (SupplyCard cards : game.getShop().getShopCollection()) System.out.print(cards.getName() + "(" + cards.getAmount() + ")  "); //foreach?
         System.out.println();
         System.out.println();
     }
