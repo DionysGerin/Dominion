@@ -5,13 +5,11 @@ public class Turn
 	private int actions;
 	private int buys;
         private int money;
-        private boolean isOver;
 	
 	public Turn()
 	{
             actions = 1;
             buys = 1;
-            isOver = false;
             money = 0;
 	}
 	
@@ -19,16 +17,16 @@ public class Turn
 	{
             return actions;
 	}
-        
-        public void setActionsToZero()
-        {
-            actions = 0;
-        }
 	
 	public int getBuys()
 	{
             return buys;
 	}
+        
+        public int getMoney()
+        {
+            return money;
+        }
 	
 	public void reduceActions()
 	{
@@ -39,6 +37,11 @@ public class Turn
 	{
             buys--;
 	}
+        
+        public void reduceMoney(int amount)
+        {
+            money -= amount;
+        }
 	
 	public void addActions(int amount)
 	{
@@ -53,20 +56,5 @@ public class Turn
         public void addMoney(int amount)
         {
             money += amount;
-        }
-        
-        public void reduceMoney(int amount)
-        {
-            money -= amount;
-        }
-	
-	public void endTurn()
-	{
-            isOver = true;
-	}
-        
-        public boolean isOver()
-        {
-            return (buys == 0 || isOver);
         }
 }

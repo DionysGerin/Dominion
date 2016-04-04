@@ -93,6 +93,16 @@ public class CardCollection
         }
     }
     
+    public void deckPileToDiscard()
+    {
+        int size = deck.size();
+        for (int i = 0; i < size; i++)
+        {
+            discard.add(deck.get(0));
+            deck.remove(0);
+        }
+    }
+    
     public void shuffleDeck()
     {
         Collections.shuffle(deck);
@@ -114,13 +124,11 @@ public class CardCollection
         hand.remove(index);
     }
     
-    public void deckPileToDiscard()
+    public boolean hasTypeInHand(int type)
     {
-        int size = deck.size();
-        for (int i = 0; i < size; i++)
-        {
-            discard.add(deck.get(0));
-            deck.remove(0);
-        }
+        Boolean hasType = false;
+        for (Card cards : hand) if (cards.getType() == type) hasType = true;
+        
+        return hasType;
     }
 }

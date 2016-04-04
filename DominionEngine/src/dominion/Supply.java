@@ -52,8 +52,6 @@ public class Supply
         Card tmp = (Card) supplyCollection[index].get(0); 
         supplyCollection[index].remove(0);
         
-        
-        
         return tmp;
     }
     
