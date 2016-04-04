@@ -49,7 +49,7 @@ public class Console
 
         //Print current player, the supply and current player's hand
         System.out.println(currentPlayer.getPlayerName() + "'s turn\n");
-        printShop();
+        printSupply();
         printHand(currentPlayer);
 
         //Go through turn phases
@@ -62,21 +62,22 @@ public class Console
     {
         //Keuze opvragen en bewaren of er een actiekaart gespeeld moet worden, indien mogelijk
         Boolean playAction = true;
-        int playActionChoice = scanner.nextInt();
-        if (turn.getActions() != 0)
+        int playActionChoice;
+        if (currentPlayer.getCardCollection().hasTypeInHand(2))
         {
             System.out.println("Play an action card? (1 = yes, 0 = no)");
+            playActionChoice = scanner.nextInt();
             if (playActionChoice == 0) playAction = false;
         } else playAction = false;
         
         //Zolang de spelers actiekaarten, acties overheeft of een kaart wil spelen zal hij vragen om ze te leggen op de table
-        while (currentPlayer.getCardCollection().hasTypeInHand(2) && playAction)
+        while (playAction)
         {
             //Eerste deel, ...
             turn.reduceActions();
             
             //Tweede deel, Opnieuw keuze opvragen en bewaren of er nog een actiekaart gespeeld moet worden, indien mogelijk
-            if (turn.getActions() != 0)
+            if (turn.getActions() != 0 && currentPlayer.getCardCollection().hasTypeInHand(2))
             {
                 System.out.println("Play another action card? (1 = yes, 0 = no)");
                 playActionChoice = scanner.nextInt();
@@ -109,8 +110,9 @@ public class Console
             }
 
             //Tweede deel van de buyphase, de kaart kiezen om te kopen, hier worden ook controles uitgevoerd
+            printSupply();
             System.out.println("What card do you want to buy?");
-            printShop();
+            printTable(currentPlayer);
             int buyChoice = scanner.nextInt();
             
             //Hier wordt gekeken of er nog over zijn en je het kan betalen (money in turn and money on table), vervolgens wordt buys verminderd, de kaart en de table aan discard toegevoegd
@@ -160,7 +162,7 @@ public class Console
         game.getPlayer(1).getCardCollection().drawCard(5);
     }
     
-    public void printShop()
+    public void printSupply()
     {
         //Goes through all cards in shop and prints them
         System.out.println("Cards in Shop:");
@@ -172,7 +174,14 @@ public class Console
     {
         //Goes through all cards in hand from current player and prints them
         System.out.println("Cards in hand:");
-        for (Card cards : player.getCardCollection().getHand()) System.out.println(cards.getName() + "   ");
+        for (Card cards : player.getCardCollection().getHand()) System.out.println(cards.getName());
+        System.out.println();
+    }
+    
+    public void printTable(Player player)
+    {
+        System.out.println("Cards on the table");
+        for (Card tableCards : player.getCardCollection().getTable()) System.out.println(tableCards.getName());
         System.out.println();
     }
 }
