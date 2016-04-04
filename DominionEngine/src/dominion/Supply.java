@@ -62,12 +62,17 @@ public class Supply
         return supplyCollection[index];
     }
     
+    public ArrayList[] getSupply()
+    {
+        return supplyCollection;
+    }
+    
     public boolean isGameOver(int amountPlayers) // nieuwe naam winCondition
     {
         int total = 0;
-        for (int i = 0; i < 17; i++) if(supplyCollection[i].size() == 0) total ++;
+        for (int i = 0; i < 17; i++) if(supplyCollection[i].isEmpty()) total ++;
         
-        if (supplyCollection[6].size() == 0 || total >= 3) return true;
+        if (supplyCollection[6].isEmpty() || total >= 3) return true;
         else return false;
     }
 }
