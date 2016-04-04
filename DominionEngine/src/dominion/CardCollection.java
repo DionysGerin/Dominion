@@ -46,7 +46,7 @@ public class CardCollection
     public int getValueOnTable()
     {
         int totalValue = 0;
-        for (Card playedCards : table) totalValue += ((TreasureCard) playedCards).getTreasurePoints();
+        for (Card playedCards : table) if (playedCards.getType() == 0) totalValue += ((TreasureCard) playedCards).getTreasurePoints();
         return totalValue;
     }
     

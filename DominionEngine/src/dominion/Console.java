@@ -15,7 +15,7 @@ public class Console
     }
     
     
-    public Console() throws SQLException // SQLException solution?
+    public Console() throws SQLException //SQLException solution?
     {
         //Create scanner for choices during game
         scanner = new Scanner(System.in);
@@ -165,7 +165,7 @@ public class Console
     public void printSupply()
     {
         //Goes through all cards in shop and prints them
-        System.out.println("Cards in Shop:");
+        System.out.println("Cards in Supply:");
         for (ArrayList<Card> supplyCards : game.getSupply().getSupply()) System.out.println(supplyCards.get(0).getName() + " Cost: " + supplyCards.get(0).getCost() + " (" + supplyCards.size() + ")");
         System.out.println();
     }
