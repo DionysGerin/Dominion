@@ -6,18 +6,8 @@
 package Dominion;
 
 import dominion.Player;
-import dominion.KingdomCard;
 import dominion.Card;
 import dominion.CardCollection;
-import dominion.CardCreator;
-import dominion.Game;
-import dominion.Maintester;
-import dominion.MySQLConnector;
-import dominion.Supply;
-import dominion.SupplyCard;
-import dominion.TreasureCard;
-import dominion.Turn;
-import dominion.VictoryCard;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -42,10 +32,10 @@ public class DominionTester {
         someplayer = "rob";
         testplayer = new Player(someplayer);
         playerscore = 0;
-        cardName= "Village";
-        cardType= 1;
-        cardCost= 5;
-        someCard = new Card(cardName,cardCost,cardType);
+        cardName = "Village";
+        cardType = 1;
+        cardCost = 5;
+        someCard = new Card(cardName, cardCost, cardType);
         playerCards = new CardCollection();
     }
 
@@ -53,27 +43,26 @@ public class DominionTester {
     public void getPlayerName() {
         assertEquals(someplayer, testplayer.getPlayerName());
     }
-    
+
     @Test
-    public void getPlayerScore()
-    {
-         assertEquals(playerscore, testplayer.getPlayerScore());
+    public void getPlayerScore() {
+        assertEquals(playerscore, testplayer.getPlayerScore());
     }
 
     @Test
-    public void getCardName(){
-    assertEquals(cardName, someCard.getName());
+    public void getCardName() {
+        assertEquals(cardName, someCard.getName());
     }
-    
+
     @Test
-    public void getCardType(){
+    public void getCardType() {
         String a = "";
         switch (cardType) {
             case 0:
                 a = "Treasure Card";
                 break;
             case 1:
-                a =  "Victory Card";
+                a = "Victory Card";
                 break;
             case 2:
                 a = "Action Card";
@@ -81,29 +70,60 @@ public class DominionTester {
         }
         assertEquals(a, someCard.getType());
     }
-    
+
     @Test
-    public void deckGrooteBijStart()
-    {    
+    public void getCardCost() {
+        assertEquals(cardCost, someCard.getCost());
+    }
+
+    @Test
+    public void deckGrooteBijStart() {
         assertEquals(10, playerCards.getDeck().size());
     }
-    
+
     @Test
-    public void discardGrooteBijStart()
-    {    
+    public void discardGrooteBijStart() {
         assertEquals(0, playerCards.getDiscard().size());
     }
-    
+
     @Test
-    public void supplyGrooteBijStart()
-    {    
-        assertEquals(0, playerCards.getSupply().size());
+    public void supplyGrooteBijStart() {
+        assertEquals(0, playerCards.getHand().size());
+    }
+
+    @Test
+    public void tableGrooteBijStart() {
+        assertEquals(0, playerCards.getTable().size());
+    }
+
+    @Test
+    public void deckPileToDiscard() {
+        playerCards.deckPileToDiscard();
+        assertEquals(0, playerCards.getDeck().size());
+    }
+
+    @Test
+    public void discardAllCardsFromHandAndTable() {
+        playerCards.discardAllCards();
+        assertEquals(0, playerCards.getTable().size());
+        assertEquals(0, playerCards.getHand().size());
+    }
+
+    @Test
+    public void discardOneCardFromHand() {
+        playerCards.drawCard(5);
+        playerCards.discardCardFromHand(0);
+
+        assertEquals(4, playerCards.getHand().size());
     }
     
     @Test
-    public void tableGrooteBijStart()
-    {    
-        assertEquals(0, playerCards.getTable().size());
+    public void discardPileToDeck() {
+    playerCards.discardAllCards();
+    playerCards.deckPileToDiscard();
+    playerCards.discardPileToDeck();
+    assertEquals(10, playerCards.getDeck().size());
+    
     }
     
 }
