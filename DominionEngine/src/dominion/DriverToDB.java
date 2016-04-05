@@ -3,7 +3,7 @@ import java.sql.*;
 
 public class DriverToDB
 {
-	public static void main(String[] args) throws SQLException
+	public void something() throws SQLException
 	{
 		String url = "jdbc:mysql://localhost:8080/Dominion";
 		String user = "username";

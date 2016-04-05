@@ -113,15 +113,25 @@ public class CardCollection
         discard.add(card);
     }
     
+    public void addCardToTopOfDeck(Card card)
+    {
+        deck.add(0, card);
+    }
+    
     public void playCard(int handIndex)
     {
         table.add(hand.get(handIndex));
         hand.remove(handIndex);
     }
     
-    public void trashCard(int index)
+    public void trashCardFromHand(int index)
     {
         hand.remove(index);
+    }
+    
+    public void trashCardFromTable(int index)
+    {
+        table.remove(index);
     }
     
     public boolean hasTypeInHand(int type)

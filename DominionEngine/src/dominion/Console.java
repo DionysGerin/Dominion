@@ -12,6 +12,7 @@ public class Console
     {
         //Start a new game
         Console testGame = new Console();
+
     }
     
     
@@ -61,52 +62,49 @@ public class Console
     public void actionPhase(Player currentPlayer, Turn turn)
     {
         //Keuze opvragen en bewaren of er een actiekaart gespeeld moet worden, indien mogelijk
-        Boolean playAction = true;
-        int playActionChoice;
+        int playActionChoice = 0;
         if (currentPlayer.getCardCollection().hasTypeInHand(2))
         {
             System.out.println("Play an action card? (1 = yes, 0 = no)");
             playActionChoice = scanner.nextInt();
-            if (playActionChoice == 0) playAction = false;
-        } else playAction = false;
+        }
         
         //Zolang de spelers actiekaarten, acties overheeft of een kaart wil spelen zal hij vragen om ze te leggen op de table
-        while (playAction)
+        while (playActionChoice == 1)
         {
-            //Eerste deel, ...
+            //Eerste deel, maak een interpreter object die de acties overloopt en uitvoert en speel de kaart naar de tafel
+            System.out.println("What action card do you want to play?");
+            int playChoice = scanner.nextInt();
+            currentPlayer.getCardCollection().playCard(playChoice);
+            ArrayList<Card> playerTable = currentPlayer.getCardCollection().getTable();
+            AbilityInterpreter interpreter = new AbilityInterpreter(turn, game.getSupply(), currentPlayer, game.getPlayers(), ((KingdomCard) playerTable.get(playerTable.size()-1)).getAbilities());
             turn.reduceActions();
+            printHand(currentPlayer);
             
             //Tweede deel, Opnieuw keuze opvragen en bewaren of er nog een actiekaart gespeeld moet worden, indien mogelijk
-            if (turn.getActions() != 0 && currentPlayer.getCardCollection().hasTypeInHand(2))
-            {
-                System.out.println("Play another action card? (1 = yes, 0 = no)");
-                playActionChoice = scanner.nextInt();
-                if (playActionChoice == 0) playAction = false;
-            } else playAction = false;
+            System.out.println("Play another action card? (1 = yes, 0 = no)");
+            playActionChoice = scanner.nextInt();
         }
     }
     
     public void buyPhase(Player currentPlayer, Turn turn)
     {
         //Keuze opvragen en bewaren of er een kaart gekocht moet worden
-        Boolean buyCard = true;
         System.out.println("Buy a card? (1 = yes, 0 = no)");
         int buyCardChoice = scanner.nextInt();
-        if (buyCardChoice == 0) buyCard = false;
         
         //Zolang de speler buys over heeft en een kaart wil kopen
-        while (turn.getBuys() != 0 && buyCard)
+        while (turn.getBuys() != 0 && buyCardChoice == 1)
         {
             //Eerste deel van de buyphase, de kaarten kiezen om te spelen, duurt zolang er treasurekaarten kunnen gespeeld worden en er gelegd willen worden, deze gaan naar table
-            boolean playMoreCards = true;
-            while (currentPlayer.getCardCollection().hasTypeInHand(0) && playMoreCards)
+            int playChoice = 0;
+            while (currentPlayer.getCardCollection().hasTypeInHand(0) && playChoice != -1)
             {
                 System.out.println("Which treasurecard do you want to use to buy? (-1 to stop playing cards)");
                 printHand(currentPlayer);
-                int playChoice = scanner.nextInt();
+                playChoice = scanner.nextInt();
                 
-                if (playChoice == -1) playMoreCards = false;
-                else currentPlayer.getCardCollection().playCard(playChoice);
+                if (playChoice != -1) currentPlayer.getCardCollection().playCard(playChoice);
             }
 
             //Tweede deel van de buyphase, de kaart kiezen om te kopen, hier worden ook controles uitgevoerd
@@ -127,8 +125,7 @@ public class Console
             if (turn.getBuys() != 0)
             {
                 System.out.println("Buy a card? (1 = yes, 0 = no)");
-            buyCardChoice = scanner.nextInt();
-            if (buyCardChoice == 0) buyCard = false;
+                buyCardChoice = scanner.nextInt();
             }
         }
     }

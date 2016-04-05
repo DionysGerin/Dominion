@@ -16,19 +16,19 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`dbdominion` /*!40100 DEFAULT CHARACTER 
 
 USE `dbdominion`;
 
-/*Table structure for table `kingdomcard` */
+/*Table structure for table `ability` */
 
-DROP TABLE IF EXISTS `kingdomcard`;
+DROP TABLE IF EXISTS `ability`;
 
-CREATE TABLE `kingdomcard` (
-  `ActCrdNr` int(11) DEFAULT NULL,
+CREATE TABLE `ability` (
   `cardnumber` int(11) NOT NULL,
+  `abilitynr` int(11) NOT NULL,
   PRIMARY KEY (`cardnumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*Data for the table `kingdomcard` */
+/*Data for the table `ability` */
 
-insert  into `kingdomcard`(`ActCrdNr`,`cardnumber`) values 
+insert  into `ability`(`cardnumber`,`abilitynr`) values 
 (1,8),
 (2,9),
 (3,10),

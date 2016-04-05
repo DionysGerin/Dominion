@@ -1,13 +1,19 @@
 package dominion;
 
-// import java.util.*; useless import
+import java.util.*;
 
 public class KingdomCard extends Card
 {
-    private int[] ability;      //moet nog afgewerkt worden
+    private ArrayList<Integer> abilities;
     
-    public KingdomCard(String name, int cost)
+    public KingdomCard(String name, int cost, ArrayList<Integer> abilities)
     {
         super(name, cost, 2);
-    }           
+        this.abilities = abilities;
+    }
+    
+    public ArrayList<Integer> getAbilities()
+    {
+        return abilities;
+    }
 }
