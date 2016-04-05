@@ -75,7 +75,7 @@ public class AbilityInterpreter
                 case 14: //Everybody reveals top card of deck and either draws it or discards it
                     drawOrDiscardCardTopDeck();
                     break;
-                case 15: //Other players show the 2 cards on thei deck and if they are treasurecards, you can gain them, otherwise they are trashed
+                case 15: //Other players show the 2 cards on their deck and if they are treasurecards, you can gain them, otherwise they are trashed
                     othersReveal2CardsGainOrTrashThem();
                     break;
                 case 16: //Play an action card twice
@@ -93,7 +93,7 @@ public class AbilityInterpreter
                 case 20: //Others take curse card
                     othersTakeCurse();
                     break;
-                case 21: //Draw cards till 2 treasure drawn, if you have to shuffle do so
+                case 21: //Draw cards till X treasure drawn, if you have to shuffle do so
                     drawTillXTreasureCards(amount);
                     break;
             }

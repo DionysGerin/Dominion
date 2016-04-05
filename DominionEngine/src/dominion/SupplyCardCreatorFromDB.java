@@ -113,6 +113,7 @@ public class SupplyCardCreatorFromDB
         //Variabelen voor de creatie van de kaart
         int cost = 0;
         int value = 0;
+        ArrayList<Integer> abilities = new ArrayList(5);
         ArrayList<KingdomCard> supplyCard = new ArrayList(10);
 
         try 
@@ -132,7 +133,10 @@ public class SupplyCardCreatorFromDB
             if (res.next()) cost = res.getInt("cost");
 
             //PART TWO, hier zouden de acties moeten zitten, die zijn nog niet geimplementeerd!!
-
+            sql = "select * from ability where cardnumber = (select cardnumber from cards where cardname = '" + kingdomCardName + "')";
+            res = statm.executeQuery(sql);
+            while(res.next()) abilities.add(res.getInt("abilitynr"));
+            
             //Alles sluiten van de connectie dat we niet meer nodig hebben of zullen gebruiken, wordt opnieuw geinitialiseerd als we meer gegevens nodig hebben
             res.close();
             statm.close();
@@ -143,7 +147,7 @@ public class SupplyCardCreatorFromDB
             e.printStackTrace();
         }
 
-        for (int i = 0; i < amount; i++) supplyCard.add(new KingdomCard(kingdomCardName, cost));
+        for (int i = 0; i < amount; i++) supplyCard.add(new KingdomCard(kingdomCardName, cost, abilities));
 
         return supplyCard;
     }
