@@ -62,7 +62,14 @@ public class CardCollection
     
     public void discardCardFromHand(int index)
     {
+        discard.add(hand.get(index));
         hand.remove(index);
+    }
+    
+    public void discardCardFromTable(int index)
+    {
+        discard.add(table.get(index));
+        table.remove(index);
     }
     
     public void discardAllCards()
@@ -118,6 +125,11 @@ public class CardCollection
         deck.add(0, card);
     }
     
+    public void addCardToHand(Card card)
+    {
+        hand.add(card);
+    }
+    
     public void playCard(int handIndex)
     {
         table.add(hand.get(handIndex));
@@ -140,5 +152,12 @@ public class CardCollection
         for (Card cards : hand) if (cards.getType() == type) hasType = true;
         
         return hasType;
+    }
+    
+    public boolean hasReactionInHand()//Enkel moat voor het moment?
+    {
+        Boolean hasReaction = false;
+        for (Card card : hand) if(card.getName().equals("Moat")) hasReaction = true;
+        return hasReaction;
     }
 }
