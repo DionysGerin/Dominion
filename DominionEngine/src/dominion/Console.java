@@ -39,7 +39,8 @@ public class Console
             isturn++;
             if (isturn == aantalSpelers) isturn = 0;
         }
-        System.out.println("Game over");
+        System.out.println("Game over\n");
+        game.getWinner();
     }
     
     public void turn(int playerIndex) throws SQLException

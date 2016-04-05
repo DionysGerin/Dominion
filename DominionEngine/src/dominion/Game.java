@@ -30,4 +30,33 @@ public class Game
         {
             return supply;
         }
+        
+        public void calculateScore()
+        {
+            for (Player player : players)
+            {
+                //Add all cards to the deck pile so we can check for victory points
+                player.getCardCollection().discardAllCards();
+                player.getCardCollection().discardPileToDeck();
+                
+                //Calculate the score
+                int score = 0;
+                for (Card card : player.getCardCollection().getDeck())
+                {
+                    if (card.getName().equals("Estate")) score ++;
+                    if (card.getName().equals("Duchy")) score += 3;
+                    if (card.getName().equals("Province")) score += 6;
+                    if (card.getName().equals("Gardens")) score += player.getCardCollection().getDeck().size()/10;
+                }
+                
+                //Set playerscore
+                player.setPlayerScore(score);
+            }
+        }
+        
+        public void getWinner()
+        {
+            calculateScore();
+            for (Player player : players) System.out.println(player.getPlayerName() + " :" + player.getPlayerScore());
+        }
 }
