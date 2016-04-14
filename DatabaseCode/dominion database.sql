@@ -16,44 +16,76 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`dbdominion` /*!40100 DEFAULT CHARACTER 
 
 USE `dbdominion`;
 
-/*Table structure for table `actioncard` */
+/*Table structure for table `ability` */
 
-DROP TABLE IF EXISTS `actioncard`;
+DROP TABLE IF EXISTS `ability`;
 
-CREATE TABLE `actioncard` (
-  `ActCrdNr` int(11) DEFAULT NULL,
+CREATE TABLE `ability` (
   `cardnumber` int(11) NOT NULL,
+  `abilitynr` int(11) NOT NULL,
   PRIMARY KEY (`cardnumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*Data for the table `actioncard` */
+/*Data for the table `ability` */
 
-insert  into `actioncard`(`ActCrdNr`,`cardnumber`) values 
-(1,8),
-(2,9),
-(3,10),
-(4,11),
-(5,12),
-(6,13),
-(7,14),
-(8,15),
-(9,16),
-(10,17),
-(11,18),
-(12,19),
-(13,20),
-(14,21),
-(15,22),
-(16,23),
-(17,24),
-(18,25),
-(19,26),
-(20,27),
-(21,28),
-(22,29),
-(23,30),
-(24,31),
-(25,32);
+insert  into `ability`(`cardnumber`,`abilitynr`) values 
+(8,101),
+(8,500),
+(9,604),
+(10,202),
+(11,704),
+(12,302),
+(12,800),
+(13,201),
+(13,102),
+(14,401),
+(14,302),
+(15,900),
+(15,705),
+(16,302),
+(16,1003),
+(17,1100),
+(18,1200),
+(19,1300),
+(20,203),
+(21,201),
+(21,101),
+(21,1400),
+(22,1500),
+(23,1600),
+
+(25,204),
+
+(25,401),
+(25,1701),
+
+(26,102),
+
+(26,401),
+
+(26,302),
+
+(27,202),
+
+(27,101),
+
+(28,1807),
+
+(29,201),
+
+(29,101),
+
+(29,401),
+
+(29,301),
+
+(30,1900),
+
+(31,202),
+
+(31,2000),
+
+(32,2102);
 
 /*Table structure for table `cards` */
 
@@ -70,28 +102,28 @@ CREATE TABLE `cards` (
 /*Data for the table `cards` */
 
 insert  into `cards`(`cardnumber`,`cardname`,`cost`,`cardtype`) values 
-(1,'Copper',0,'Treasure\n'),
+(1,'Copper',0,'Treasure'),
 (2,'Silver',3,'Treasure'),
-(3,'Gold\n',6,'Treasure'),
-(4,'Estate\n',2,'Victory\n'),
+(3,'Gold',6,'Treasure'),
+(4,'Estate',2,'Victory'),
 (5,'Duchy',5,'Victory'),
 (6,'Province',8,'Victory'),
-(7,'Curse\n',0,'Victory'),
-(8,'Cellar',2,'Action\n'),
-(9,'Chapel',2,'Action\n'),
-(10,'Moat',2,'Action\n'),
-(11,'Workshop\n',3,'Action\n'),
-(12,'Chancellor',3,'Action\n'),
-(13,'Village',3,'Action\n'),
-(14,'Woodcutter',3,'Action\n'),
-(15,'Feast\n',4,'Action'),
+(7,'Curse',0,'Victory'),
+(8,'Cellar',2,'Action'),
+(9,'Chapel',2,'Action'),
+(10,'Moat',2,'Action'),
+(11,'Workshop',3,'Action'),
+(12,'Chancellor',3,'Action'),
+(13,'Village',3,'Action'),
+(14,'Woodcutter',3,'Action'),
+(15,'Feast',4,'Action'),
 (16,'Militia',4,'Action'),
-(17,'Moneylender\n',4,'Action'),
-(18,'Remodel\n',4,'Action'),
+(17,'Moneylender',4,'Action'),
+(18,'Remodel',4,'Action'),
 (19,'Bureaucrat',4,'Action'),
 (20,'Smithy',4,'Action'),
 (21,'Spy',4,'Action'),
-(22,'Thief\n',4,'Action'),
+(22,'Thief',4,'Action'),
 (23,'Trone Room',4,'Action'),
 (24,'Gardens',4,'Action'),
 (25,'Council Room',5,'Action'),

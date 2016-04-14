@@ -27,4 +27,9 @@ public class Player
         {
             return playerCollection;
         }
+        
+        public void setPlayerScore(int score)
+        {
+            this.score = score;
+        }
 }

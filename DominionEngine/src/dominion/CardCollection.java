@@ -6,15 +6,15 @@ public class CardCollection
 {
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
-    private ArrayList<Card> supply;
+    private ArrayList<Card> hand;
     private ArrayList<Card> table;
     
     public CardCollection()
     {
         deck = new ArrayList(100);
         discard = new ArrayList(100);
-        supply = new ArrayList(20);
-        table = new ArrayList(20);
+        hand = new ArrayList(100);
+        table = new ArrayList(100);
         
         for (int i = 0; i < 7; i++) deck.add(new TreasureCard("Copper", 0, 1));
         
@@ -33,14 +33,21 @@ public class CardCollection
         return discard;
     }
     
-    public ArrayList<Card> getSupply()
+    public ArrayList<Card> getHand()
     {
-        return supply;
+        return hand;
     }
     
     public ArrayList<Card> getTable()
     {
-        return supply;
+        return table;
+    }
+    
+    public int getValueOnTable()
+    {
+        int totalValue = 0;
+        for (Card playedCards : table) if (playedCards.getType() == 0) totalValue += ((TreasureCard) playedCards).getTreasurePoints();
+        return totalValue;
     }
     
     public void drawCard(int amount)
@@ -48,23 +55,30 @@ public class CardCollection
         for (int i = 0; i < amount; i++)
         {
             if (deck.isEmpty()) discardPileToDeck();
-            supply.add(deck.get(0));
+            hand.add(deck.get(0));
             deck.remove(0);
         }
     }
     
     public void discardCardFromHand(int index)
     {
-        supply.remove(index);
+        discard.add(hand.get(index));
+        hand.remove(index);
+    }
+    
+    public void discardCardFromTable(int index)
+    {
+        discard.add(table.get(index));
+        table.remove(index);
     }
     
     public void discardAllCards()
     {
-        int size = supply.size();
+        int size = hand.size();
         for(int i = 0; i < size; i++)
         {
-            discard.add(supply.get(0));
-            supply.remove(0);
+            discard.add(hand.get(0));
+            hand.remove(0);
         }
         tablePileToDiscard();
     }
@@ -86,6 +100,16 @@ public class CardCollection
         }
     }
     
+    public void deckPileToDiscard()
+    {
+        int size = deck.size();
+        for (int i = 0; i < size; i++)
+        {
+            discard.add(deck.get(0));
+            deck.remove(0);
+        }
+    }
+    
     public void shuffleDeck()
     {
         Collections.shuffle(deck);
@@ -96,24 +120,44 @@ public class CardCollection
         discard.add(card);
     }
     
-    public void playCard(int supplyIndex)
+    public void addCardToTopOfDeck(Card card)
     {
-        table.add(supply.get(supplyIndex));
-        supply.remove(supplyIndex);
+        deck.add(0, card);
     }
     
-    public void trashCard(int index)
+    public void addCardToHand(Card card)
     {
-        supply.remove(index);
+        hand.add(card);
     }
     
-    public void deckPileToDiscard()
+    public void playCard(int handIndex)
     {
-        int size = deck.size();
-        for (int i = 0; i < size; i++)
-        {
-            discard.add(deck.get(0));
-            deck.remove(0);
-        }
+        table.add(hand.get(handIndex));
+        hand.remove(handIndex);
+    }
+    
+    public void trashCardFromHand(int index)
+    {
+        hand.remove(index);
+    }
+    
+    public void trashCardFromTable(int index)
+    {
+        table.remove(index);
+    }
+    
+    public boolean hasTypeInHand(int type)
+    {
+        Boolean hasType = false;
+        for (Card cards : hand) if (cards.getType() == type) hasType = true;
+        
+        return hasType;
+    }
+    
+    public boolean hasReactionInHand()//Enkel moat voor het moment?
+    {
+        Boolean hasReaction = false;
+        for (Card card : hand) if(card.getName().equals("Moat")) hasReaction = true;
+        return hasReaction;
     }
 }

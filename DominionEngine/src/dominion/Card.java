@@ -23,16 +23,8 @@ public class Card
         return cost;
     }
     
-    public String getType()
+    public int getType()
     {
-        // hier beter switch dan 3 if's  in elkaar 
-        switch (type) {
-            case 0:
-                return "Treasure Card";
-            case 1:
-                return  "Victory Card";
-            default:
-                return "Action Card";
-        }
+        return type;
     }
 }
