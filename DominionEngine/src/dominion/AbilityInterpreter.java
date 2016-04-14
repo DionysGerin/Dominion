@@ -304,7 +304,7 @@ public class AbilityInterpreter
     
     public void othersTakeCurse()
     {
-        for (Player player : allPlayers)  if (player != currentPlayer && !player.getCardCollection().hasReactionInHand()) player.getCardCollection().addNewCardToDiscard(supply.cardPurchase(0));
+        for (Player player : allPlayers) if (player != currentPlayer && !player.getCardCollection().hasReactionInHand()) player.getCardCollection().addNewCardToDiscard(supply.cardPurchase(0));
     }
     
     public void drawTillXTreasureCards(int amount)

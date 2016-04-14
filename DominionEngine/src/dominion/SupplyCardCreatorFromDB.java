@@ -23,8 +23,8 @@ public class SupplyCardCreatorFromDB
 
         try 
         {
-            //De driver connector gebruiken om een connectie te maken
-            Class.forName(JDBC_DRIVER);
+            //De driver connector gebruiken om een connectie te maken (dit is niet meer noodzakelijk met de laatste java versie)
+            //Class.forName(JDBC_DRIVER);
 
             //Connectie opstellen en een resultaatset ophalen van de gegevens dat we nodig hebben
             con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -46,14 +46,12 @@ public class SupplyCardCreatorFromDB
             res.close();
             statm.close();
             con.close();
-
-        } catch (Exception e) //Nodig voor de klasse die we zoeken, als deze niet gevonden is dan wordt deze catch uitgevoerd, zonder krijgen we errors in onze code
+        } 
+        catch (Exception e) //Nodig voor de klasse die we zoeken, als deze niet gevonden is dan wordt deze catch uitgevoerd, zonder krijgen we errors in onze code
         {
             e.printStackTrace();
         }
-
         for (int i = 0; i < amount; i++) supplyCard.add(new TreasureCard(treasureCardName, cost, value));
-        
         return supplyCard;
     }
     
@@ -71,8 +69,7 @@ public class SupplyCardCreatorFromDB
         try 
         {
             //De driver connector gebruiken om een connectie te maken
-            Class.forName(JDBC_DRIVER);
-
+            //Class.forName(JDBC_DRIVER);
             //Connectie opstellen en een resultaatset ophalen van de gegevens dat we nodig hebben
             con = DriverManager.getConnection(DB_URL, USER, PASS);
             statm = con.createStatement();
@@ -100,7 +97,6 @@ public class SupplyCardCreatorFromDB
         }
 
         for (int i = 0; i < amount; i++) supplyCard.add(new VictoryCard(victoryCardName, cost, value));
-        
         return supplyCard;
     }
     
@@ -118,13 +114,12 @@ public class SupplyCardCreatorFromDB
 
         try 
         {
-            //De driver connector gebruiken om een connectie te maken
-            Class.forName(JDBC_DRIVER);
+            //De driver connector gebruiken om een connectie te maken 
+            //Class.forName(JDBC_DRIVER);
 
             //Connectie opstellen en een resultaatset ophalen van de gegevens dat we nodig hebben
             con = DriverManager.getConnection(DB_URL, USER, PASS);
             statm = con.createStatement();
-
             String sql = "select * from cards where cardname = '" + kingdomCardName + "'";
             ResultSet res = statm.executeQuery(sql);
             //De resultaatset verdelen in variabelen zodat we ze apart kunnen gebruiken

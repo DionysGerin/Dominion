@@ -12,28 +12,47 @@ public class Console
     {
         //Start a new game
         Console testGame = new Console();
-
     }
-    
-    
+   
     public Console() throws SQLException //SQLException solution?
     {
         //Create scanner for choices during game
         scanner = new Scanner(System.in);
-        
         //Sets the game up
         setUpGame();
-        
         //While loop till win condition is triggered by a turn
         gameLoop();
     }
     
+     public void setUpGame()
+    {
+        //Basic settings
+        System.out.println("Welcome to dominion\nHow many players do you want to play with? (Static amount of 2 atm, in development)\n"); // needs to be added
+        
+        System.out.print("Enter player1 name: ");
+        String name1 = scanner.next();
+        System.out.println();
+        Player player1 = new Player(name1);
+        
+        System.out.print("Enter player2 name: ");
+        String name2 = scanner.next();
+        System.out.println();
+        Player player2 = new Player(name2);
+        
+        //initialise game with basic settings
+        game = new Game(player1, player2);
+        
+        //Players have to draw 5 cards each at start of new game
+        game.getPlayer(0).getCardCollection().drawCard(5);
+        game.getPlayer(1).getCardCollection().drawCard(5);
+    }
+    
     public void gameLoop() throws SQLException
     {
-        //Keeps making and ending turns till win condition is triggered
+        //Keeplarss making and ending turns till win condition is triggered
         int isturn = 0;
         int aantalSpelers = game.getPlayers().size();
-        while(!game.getSupply().isGameOver(aantalSpelers))
+        while(!game.getSupply().winCondition(aantalSpelers))
         {
             turn(isturn);
             isturn++;
@@ -41,23 +60,6 @@ public class Console
         }
         System.out.println("Game over\n");
         game.getWinner();
-    }
-    
-    public void turn(int playerIndex) throws SQLException
-    {
-        //Creates turn object en stores the current player in variable
-        Turn turn = new Turn();
-        Player currentPlayer = game.getPlayer(playerIndex);
-
-        //Print current player, the supply and current player's hand
-        System.out.println(currentPlayer.getPlayerName() + "'s turn\n");
-        printSupply();
-        printHand(currentPlayer);
-
-        //Go through turn phases
-        actionPhase(currentPlayer, turn);
-        buyPhase(currentPlayer, turn);
-        cleanUpPhase(currentPlayer, turn);
     }
     
     public void actionPhase(Player currentPlayer, Turn turn)
@@ -137,34 +139,28 @@ public class Console
         currentPlayer.getCardCollection().drawCard(5);
     }
     
-    public void setUpGame()
+    public void turn(int playerIndex) throws SQLException
     {
-        //Basic settings
-        System.out.println("Welcome to dominion\nHow many players do you want to play with? (Static amount of 2 atm, in development)\n"); // needs to be added
-        
-        System.out.print("Enter player1 name: ");
-        String name1 = scanner.next();
-        System.out.println();
-        Player player1 = new Player(name1);
-        
-        System.out.print("Enter player2 name: ");
-        String name2 = scanner.next();
-        System.out.println();
-        Player player2 = new Player(name2);
-        
-        //initialise game with basic settings
-        game = new Game(player1, player2);
-        
-        //Players have to draw 5 cards each at start of new game
-        game.getPlayer(0).getCardCollection().drawCard(5);
-        game.getPlayer(1).getCardCollection().drawCard(5);
+        //Creates turn object en stores the current player in variable
+        Turn turn = new Turn();
+        Player currentPlayer = game.getPlayer(playerIndex);
+
+        //Print current player, the supply and current player's hand
+        System.out.println(currentPlayer.getPlayerName() + "'s turn\n");
+        printSupply();
+        printHand(currentPlayer);
+
+        //Go through turn phases
+        actionPhase(currentPlayer, turn);
+        buyPhase(currentPlayer, turn);
+        cleanUpPhase(currentPlayer, turn);
     }
     
-    public void printSupply()
+    public void printSupply() // deze laatste 3 klasses kunnen blijkbaar vervangen worden door 1 dek volgens wat ik begrepen heb van dirk
     {
         //Goes through all cards in shop and prints them
         System.out.println("Cards in Supply:");
-        for (ArrayList<Card> supplyCards : game.getSupply().getSupply()) System.out.println(supplyCards.get(0).getName() + " Cost: " + supplyCards.get(0).getCost() + " (" + supplyCards.size() + ")");
+        for (ArrayList<Card> supplyCards : game.getSupply().getSupply()) System.out.println(supplyCards.get(0).getName() + " Cost: " + supplyCards.get(0).getCost() + " (quantity:" + supplyCards.size() + ")");
         System.out.println();
     }
     

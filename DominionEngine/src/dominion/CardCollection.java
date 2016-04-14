@@ -17,9 +17,7 @@ public class CardCollection
         table = new ArrayList(100);
         
         for (int i = 0; i < 7; i++) deck.add(new TreasureCard("Copper", 0, 1));
-        
         for (int i = 7; i < 10; i++) deck.add(new VictoryCard("Estate", 2, 1));
-        
         shuffleDeck();
     }
     
@@ -130,7 +128,7 @@ public class CardCollection
         hand.add(card);
     }
     
-    public void playCard(int handIndex)
+    public void playCard(int handIndex)// het is mogelijk om cijfers in te geven die hoger zijn dan het aantal kaarten in de hand
     {
         table.add(hand.get(handIndex));
         hand.remove(handIndex);

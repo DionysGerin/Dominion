@@ -7,7 +7,8 @@ import java.util.logging.Logger;
 
 public class Supply 
 {
-    private ArrayList[] supplyCollection; //De 10 gekozen kaarten zullen gekozne moeten worden uit alle mogelijke kaarten, deze worden aan de spelers via de databank weergegeven
+    //De 10 gekozen kaarten zullen gekozen moeten worden uit alle mogelijke kaarten, deze worden aan de spelers via de databank weergegeven
+    private ArrayList[] supplyCollection; 
     private boolean gameOver;   
     
     public Supply(String[] chosenKingdomCards)//String[] of the 10 chosen cards EN hoeveelheid van de kaarten doen afhangen van de spelers van de eerste 7 (non kingdom cards)
@@ -51,7 +52,6 @@ public class Supply
     {
         Card tmp = (Card) supplyCollection[index].get(0); 
         supplyCollection[index].remove(0);
-        
         return tmp;
     }
     
@@ -65,7 +65,7 @@ public class Supply
         return supplyCollection;
     }
     
-    public boolean isGameOver(int amountPlayers) // nieuwe naam winCondition
+    public boolean winCondition(int amountPlayers) 
     {
         int total = 0;
         for (int i = 0; i < 17; i++) if(supplyCollection[i].isEmpty()) total ++;
