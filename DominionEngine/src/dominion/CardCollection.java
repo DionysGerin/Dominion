@@ -48,6 +48,13 @@ public class CardCollection
         return totalValue;
     }
     
+     public int getValueHand()
+    {
+        int totalValue = 0;
+        for (Card playedCards : hand) if (playedCards.getType() == 0) totalValue += ((TreasureCard) playedCards).getTreasurePoints();
+        return totalValue;
+    }
+    
     public void drawCard(int amount)
     {
         for (int i = 0; i < amount; i++)

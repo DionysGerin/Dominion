@@ -104,9 +104,9 @@ public class Console {
             //Eerste deel van de buyphase, de kaarten kiezen om te spelen, duurt zolang er treasurekaarten kunnen gespeeld worden en er gelegd willen worden, deze gaan naar table
             int playChoice = 0;
             while (currentPlayer.getCardCollection().hasTypeInHand(0) && playChoice != -1) {
-                System.out.println("Which treasurecard do you want to use to buy? (-1 to stop playing cards)");
+                System.out.println("Which treasurecard do you want to use to buy? (0 to stop playing cards)");
                 printHand(currentPlayer);
-                playChoice = scanner.nextInt();
+                playChoice = scanner.nextInt() - 1;
 
                 if (playChoice != -1) {
                     currentPlayer.getCardCollection().playCard(playChoice);
@@ -115,20 +115,34 @@ public class Console {
 
             //Tweede deel van de buyphase, de kaart kiezen om te kopen, hier worden ook controles uitgevoerd
             printSupply();
-            System.out.println("What card do you want to buy?");
-            printTable(currentPlayer);
-            int buyChoice = scanner.nextInt();
+            // print table wordt niet meer gedaan omdat je kan weten hoeveel geld er ligt op tafel voor te kopen print tabel overbodig
+            System.out.println("What card do you want to buy? total Coins = " + (currentPlayer.getCardCollection().getValueOnTable() + turn.getMoney()) + " and you have " + turn.getBuys() + " buy action");
+            //printTable(currentPlayer);
+            int buyChoice = scanner.nextInt() - 1;
 
             //Hier wordt gekeken of er nog over zijn en je het kan betalen (money in turn and money on table), vervolgens wordt buys verminderd, de kaart en de table aan discard toegevoegd
             if (!game.getSupply().getSupplyCard(buyChoice).isEmpty() && game.getSupply().getSupplyCard(buyChoice).get(0).getCost() <= currentPlayer.getCardCollection().getValueOnTable() + turn.getMoney()) {
                 turn.reduceBuys();
                 currentPlayer.getCardCollection().addNewCardToDiscard(game.getSupply().cardPurchase(buyChoice));
                 currentPlayer.getCardCollection().tablePileToDiscard();
+            } else {
+                // hier wordt er een error getoond dat hij niet kan kopen wegen te weinig geld
+                System.out.println("You don't have enough gold");
+                while (currentPlayer.getCardCollection().getValueHand() > 0) {
+                    System.out.println("You have more treasurecard do you want to use it to buy? (0 to stop playing cards)");
+                    printHand(currentPlayer);
+                    playChoice = scanner.nextInt() - 1;
+
+                    if (playChoice != -1) {
+                        currentPlayer.getCardCollection().playCard(playChoice);
+                    }
+
+                }
             }
 
             //Derde deel, Opnieuw keuze opvragen en bewaren of er nog een kaart gekocht moet worden, indien mogelijk
             if (turn.getBuys() != 0) {
-                System.out.println("Buy a card? (1 = yes, 0 = no)");
+                System.out.println("Buy a other card? (1 = yes, 0 = no)");
                 buyCardChoice = scanner.nextInt();
             }
         }
@@ -145,8 +159,8 @@ public class Console {
         Player currentPlayer = game.getPlayer(playerIndex);
 
         //Print current player, the supply and current player's hand
-        System.out.println(currentPlayer.getPlayerName() + "'s turn\n");
         printSupply();
+        System.out.println(currentPlayer.getPlayerName() + "'s turn\n");
         printHand(currentPlayer);
 
         //Go through turn phases
@@ -159,9 +173,9 @@ public class Console {
     {
         //Goes through all cards in shop and prints them
         System.out.println("Cards in Supply:");
-
+        // overal wordt geteld vanaf 1 gemakelijker voor user
         //Added index with i
-        int i = 0;
+        int i = 1;
         for (ArrayList<Card> supplyCards : game.getSupply().getSupply()) {
             System.out.println(i + ". " + supplyCards.get(0).getName() + " Cost: " + supplyCards.get(0).getCost() + " (quantity:" + supplyCards.size() + ")");
             i++;
@@ -172,9 +186,9 @@ public class Console {
     public void printHand(Player player) {
         //Goes through all cards in hand from current player and prints them
         System.out.println("Cards in hand:");
-
+        // overal wordt geteld vanaf 1 gemakelijker voor user
         //Added index with i
-        int i = 0;
+        int i = 1;
         for (Card cards : player.getCardCollection().getHand()) {
             System.out.println(i + ". " + cards.getName());
             i++;
@@ -184,9 +198,9 @@ public class Console {
 
     public void printTable(Player player) {
         System.out.println("Cards on the table");
-
+        // overal wordt geteld vanaf 1 gemakelijker voor user
         //Added index with i
-        int i = 0;
+        int i = 1;
         for (Card tableCards : player.getCardCollection().getTable()) {
             System.out.println(i + ". " + tableCards.getName());
             i++;
