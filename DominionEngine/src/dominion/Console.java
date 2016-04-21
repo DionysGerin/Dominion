@@ -160,7 +160,14 @@ public class Console
     {
         //Goes through all cards in shop and prints them
         System.out.println("Cards in Supply:");
-        for (ArrayList<Card> supplyCards : game.getSupply().getSupply()) System.out.println(supplyCards.get(0).getName() + " Cost: " + supplyCards.get(0).getCost() + " (quantity:" + supplyCards.size() + ")");
+        
+        //Added index with i
+        int i = 0;
+        for (ArrayList<Card> supplyCards : game.getSupply().getSupply()) 
+        {
+            System.out.println(i + ". " + supplyCards.get(0).getName() + " Cost: " + supplyCards.get(0).getCost() + " (quantity:" + supplyCards.size() + ")");
+            i++;
+        }
         System.out.println();
     }
     
@@ -168,14 +175,28 @@ public class Console
     {
         //Goes through all cards in hand from current player and prints them
         System.out.println("Cards in hand:");
-        for (Card cards : player.getCardCollection().getHand()) System.out.println(cards.getName());
+        
+        //Added index with i
+        int i = 0;
+        for (Card cards : player.getCardCollection().getHand()) 
+        {
+            System.out.println(i + ". " + cards.getName());
+            i++;
+        }
         System.out.println();
     }
     
     public void printTable(Player player)
     {
         System.out.println("Cards on the table");
-        for (Card tableCards : player.getCardCollection().getTable()) System.out.println(tableCards.getName());
+        
+        //Added index with i
+        int i = 0;
+        for (Card tableCards : player.getCardCollection().getTable())
+        {
+            System.out.println(i + ". " + tableCards.getName());
+            i++;
+        }
         System.out.println();
     }
 }
