@@ -73,7 +73,7 @@ public class Console
         }
         
         //Zolang de spelers actiekaarten, acties overheeft of een kaart wil spelen zal hij vragen om ze te leggen op de table
-        while (playActionChoice == 1)
+        while (playActionChoice == 1 && currentPlayer.getCardCollection().hasTypeInHand(2))
         {
             //Eerste deel, maak een interpreter object die de acties overloopt en uitvoert en speel de kaart naar de tafel
             System.out.println("What action card do you want to play?");
@@ -85,8 +85,11 @@ public class Console
             printHand(currentPlayer);
             
             //Tweede deel, Opnieuw keuze opvragen en bewaren of er nog een actiekaart gespeeld moet worden, indien mogelijk
+            if(turn.getActions() > 1)
+            {
             System.out.println("Play another action card? (1 = yes, 0 = no)");
             playActionChoice = scanner.nextInt();
+            }
         }
     }
     
@@ -147,7 +150,7 @@ public class Console
 
         //Print current player, the supply and current player's hand
         System.out.println(currentPlayer.getPlayerName() + "'s turn\n");
-        printSupply();
+        // printSupply();
         printHand(currentPlayer);
 
         //Go through turn phases
