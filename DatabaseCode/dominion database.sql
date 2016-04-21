@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `ability`;
 CREATE TABLE `ability` (
   `cardnumber` int(11) NOT NULL,
   `abilitynr` int(11) NOT NULL,
-  PRIMARY KEY (`cardnumber`)
+  PRIMARY KEY (`cardnumber`, `abilitynr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `ability` */
