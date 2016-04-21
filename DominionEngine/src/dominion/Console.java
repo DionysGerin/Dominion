@@ -85,8 +85,12 @@ public class Console
             printHand(currentPlayer);
             
             //Tweede deel, Opnieuw keuze opvragen en bewaren of er nog een actiekaart gespeeld moet worden, indien mogelijk
-            System.out.println("Play another action card? (1 = yes, 0 = no)");
-            playActionChoice = scanner.nextInt();
+            playActionChoice = 0;
+            if (currentPlayer.getCardCollection().hasTypeInHand(2) && turn.getActions() > 0)
+            {
+                System.out.println("Play another action card? (1 = yes, 0 = no)");
+                playActionChoice = scanner.nextInt();
+            }
         }
     }
     
